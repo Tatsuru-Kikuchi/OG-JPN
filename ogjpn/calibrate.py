@@ -1,4 +1,4 @@
-from ogjpn import estimate_beta_j, demographics
+from ogjpn import demographics
 from ogjpn import macro_params, transfer_distribution, income
 import os
 import numpy as np
