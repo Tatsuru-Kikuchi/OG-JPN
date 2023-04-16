@@ -16,7 +16,7 @@ OG-JPN is an overlapping-generations (OG) model core theory, logic, and solution
 The model is constantly under development, and model components could change significantly. The package will have released versions, which will be checked against existing code prior to release. Stay tuned for an upcoming release!
 
 
-## Using/contributing to OG-Core
+## Using/contributing to OG-JPN
 
 There is only one method available for installing and running OG-JPN on your computer locally. The method is to fork and clone the most recent version of OG-JPN from its GitHub repository and create the conda environment for the `ogjpn` package. We detail both of these methods below.
 
