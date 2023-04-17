@@ -52,7 +52,7 @@ The CSV output file `./examples/ogjpn_example_output.csv` can be compared to the
 
 The core maintainer of the OG-JPN repository is:
 
-* [Tatsuru Kikuchi] (GitHub handle: [Tatsuru_Kikuchi](https://github.com/Tatsuru-Kikuchi)), Research Officer at the Faculty of Economics, The University of Tokyo.
+* [Tatsuru Kikuchi] (GitHub handle: [Tatsuru_Kikuchi](https://github.com/Tatsuru-Kikuchi)), Research Officer, Faculty of Economics, The University of Tokyo.
 
 ## Citing OG-JPN
 
