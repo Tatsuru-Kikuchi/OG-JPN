@@ -30,7 +30,7 @@ def get_legacy_session():
     session.mount('https://', CustomHttpAdapter(ctx))
     return session
 
-locations = 392  # UN code for JPN
+locations = "392"  # UN code for JPN
 # create output director for figures
 CUR_PATH = os.path.split(os.path.abspath(__file__))[0]
 OUTPUT_DIR = os.path.join(CUR_PATH, "OUTPUT", "Demographics")
@@ -57,32 +57,23 @@ def get_un_data(indicators, locations, start_year, end_year):
         df (Pandas DataFrame): DataFrame of UN data
     """
     endpoint_url = 'https://population.un.org/dataportalapi/api/v1'
-    url = endpoint_url + '/data/indicators/' + str(indicators) + '/locations/' + str(locations) + '/start/' + str(start_year) + '/end/' + str(end_year) + '&pageSize=100'
-    #with (
-    #    get_legacy_session() as s,
-    #    s.get(url) as r
-    #):
-    #    j = r.json()
-    #    print(j)
+    url = endpoint_url + '/data/indicators/' + indicators + '/locations/' + locations + '/start/' + str(start_year) + '/end/' + str(end_year) + '?pageSize=100&pagingInHeader=false&format=json'
     r = requests.get(url)
     res = r.json()
-    try:
-        df = pd.DataFrame(res)
-        for page in range(2,99):
-            url = endpoint_url + '/data/indicators/' + str(indicators) + '/locations/' + str(locations) + '/start/' + str(start_year) + '/end/' + str(end_year) + '?pageNumber=' + page + '&pageSize=100'
-            r = requests.get(url)
-            res = r.json()
-            # Store the next page in a data frame
-            df_temp = pd.DataFrame(res)
-            # Append next page to the data frame
-            df = df.append(df_temp)
-            df.rename(columns=df.iloc[0], inplace = True)
-            df.drop(df.index[0], inplace = True)
-    except RequestException as e:
-        raise SystemExit(e)
-    return df
+    df = pd.json_normalize(res["data"])
+    while res["nextPage"] is not None:
+    #    for page in range(2,99):
+        url = endpoint_url + '/data/indicators/' + indicators + '/locations/' + locations + '/start/' + str(start_year) + '/end/' + str(end_year) + '?pageSize=100&pagingInHeader=false&format=json'
+        r = requests.get(url)
+        res = r.json()
+        df_temp = pd.json_normalize(res["data"])
+        df = pd.concat([df, df_temp])
+            #df.rename(columns=df.iloc[0], inplace = True)
+            #df.drop(df.index[0], inplace = True)
+    #except RequestException as e:
+    #    raise SystemExit(e)
+    #return df
     #assert len(df)==j['total'], "DataFrame observations do not match total number of records in response"
-    # keep just what is needed from data
     df = df[df.variant == "Median"]
     df = df[df.sex == "Both sexes"][["timeLabel", "ageLabel", "value"]]
     df.rename({"timeLabel": "year", "ageLabel": "age"}, axis=1, inplace=True)
@@ -90,6 +81,7 @@ def get_un_data(indicators, locations, start_year, end_year):
     df.age = df.age.astype(int)
     df.year = df.year.astype(int)
     df = df[df.age <= 100]
+
     return df
 
 
@@ -108,9 +100,9 @@ def get_fert(totpers=100, min_age=0, max_age=100, graph=False):
             of life
     """
     # Read UN data
-    df = get_un_data(indicators=68, locations=392, start_year=1990, end_year=2023)
+    df = get_un_data(indicators="68", locations="392", start_year=2023, end_year=2023)
     # put in vector
-    fert_rates = df.value.values
+    fert_rates = df["value"].values
     # fill in with zeros for ages  < 15 and > 49
     # NOTE: this assumes min_year < 15 and max_age > 49
     fert_rates = np.append(fert_rates, np.zeros(max_age - 49))
@@ -166,9 +158,9 @@ def get_mort(totpers=100, min_age=0, max_age=100, graph=True):
         infmort_rate (scalar): infant mortality rate
     """
     # Read UN data
-    df = get_un_data(indicators=80, locations=392, start_year=1990, end_year=2023)
+    df = get_un_data(indicators="80", locations="392", start_year=2023, end_year=2023)
     # put in vector
-    mort_rates_data = df.value.values
+    mort_rates_data = df["value"].values
     # In UN data, mortality rates for 0 year olds are the infant
     # mortality rates
     infmort_rate = mort_rates_data[0]
@@ -273,7 +265,7 @@ def get_imm_rates(totpers=100, min_age=0, max_age=100):
     for t in range(num_years):
         pop_dist = df[
             (df.year == start_year + t) & (df.age <= 100) & (df.age > 0)
-        ].value.values
+        ]["value"].values
         pop_dict[t] = pop_rebin(pop_dist, totpers)
         pop_dict[t] = pop_dist
 
@@ -446,7 +438,7 @@ def get_pop_objs(
     pop_data_sample = pop_data[
         (pop_data["age"] >= min_age - 1) & (pop_data["age"] <= max_age - 1)
     ]
-    pop = pop_data_sample.value.values
+    pop = pop_data_sample["value"].values
     # Generate the current population distribution given that E+S might
     # be less than max_age-min_age+1
     age_per_EpS = np.arange(1, E + S + 1)
