@@ -56,4 +56,4 @@ The core maintainer of the OG-JPN repository is:
 
 ## Citing OG-JPN
 
-OG-JPN (Version #.#.#)[Source code], https://github.com/Tatsuru-Kikuchi/OG-JPN
+OG-JPN (Version 1.0.0)[Source code], https://github.com/Tatsuru-Kikuchi/OG-JPN
