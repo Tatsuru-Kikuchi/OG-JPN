@@ -48,6 +48,12 @@ If you run into errors running the example script, please open a new issue in th
 
 The CSV output file `./examples/ogjpn_example_output.csv` can be compared to the `./examples/expected_ogjpn_example_output.csv` file that is checked into the repository to confirm that you are generating the expected output. The easiest way to do this is to use the `sh example-diffs` command (or `example-diffs` on Windows) from the `examples` directory. If you run into errors running the example script, please open a new issue in the OG-JPN repo with a description of the issue and any relevant tracebacks you receive.
 
+## Core Maintainers
+
+The core maintainer of the OG-JPN repository is:
+
+* [Tatsuru Kikuchi] (GitHub handle: [Tatsuru_Kikuchi](https://github.com/Tatsuru-Kikuchi))
+
 ## Citing OG-JPN
 
 OG-JPN (Version #.#.#)[Source code], https://github.com/Tatsuru-Kikuchi/OG-JPN
