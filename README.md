@@ -46,13 +46,22 @@ Note that, depending on your machine, a full model run (solving for the full tim
 
 If you run into errors running the example script, please open a new issue in the OG-JPN repo with a description of the issue and any relevant tracebacks you receive.
 
-The CSV output file `./examples/ogjpn_example_output.csv` can be compared to the `./examples/expected_ogjpn_example_output.csv` file that is checked into the repository to confirm that you are generating the expected output. The easiest way to do this is to use the `sh example-diffs` command (or `example-diffs` on Windows) from the `examples` directory. If you run into errors running the example script, please open a new issue in the OG-JPN repo with a description of the issue and any relevant tracebacks you receive.
+Once the package is installed, one can adjust parameters in the OG-Core `Specifications` object using the `Calibration` class as follows:
+
+```
+from ogcore.parameters import Specifications
+from ogjpn.calibrate import Calibration
+p = Specifications()
+c = Calibration(p)
+updated_params = c.get_dict()
+p.update_specifications({'initial_debt_ratio': updated_params['initial_debt_ratio']})
+```
 
 ## Core Maintainers
 
 The core maintainer of the OG-JPN repository is:
 
-* [Tatsuru Kikuchi] (GitHub handle: [Tatsuru_Kikuchi](https://github.com/Tatsuru-Kikuchi)), Research Officer, Faculty of Economics, The University of Tokyo.
+* Tatsuru Kikuchi (GitHub handle: [Tatsuru_Kikuchi](https://github.com/Tatsuru-Kikuchi)), Research Officer, Faculty of Economics, The University of Tokyo.
 
 ## Citing OG-JPN
 
