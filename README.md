@@ -14,7 +14,7 @@ The model is constantly under development, and model components could change sig
 
 ## Using/contributing to OG-JPN
 
-There is only one method available for installing and running OG-JPN on your computer locally. The method is to fork and clone the most recent version of OG-JPN from its GitHub repository and create the conda environment for the `ogjpn` package. We detail both of these methods below.
+There is only one method available for installing and running OG-JPN on your computer locally. The method is to fork and clone the most recent version of OG-JPN from its GitHub repository and create the conda environment for the `ogjpn` package. We detail this method below.
 
 ### Installing and Running OG-JPN from GitHub repository
 
