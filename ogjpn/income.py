@@ -173,11 +173,11 @@ def get_e_interp(S, age_wgts, age_wgts_80, abil_wgts, plot=False):
     abil_wgts_orig = np.array([0.25, 0.25, 0.2, 0.1, 0.1, 0.09, 0.01])
     emat_orig = get_e_orig(age_wgts_80, abil_wgts_orig, plot)
 
-    # Now adjust for IND by changing the e matrix to match the gini in
+    # Now adjust for JPN by changing the e matrix to match the gini in
     # JPN (=32.9 in WB data: https://data.worldbank.org/indicator/SI.POV.GINI))
     # Note, USA gini in these data is 41.5
     # pop_dist = abil_wgts.reshape(1, 7) * age_wgts.reshape(80, 1)
-    gini_ind_data = 32.9
+    gini_jpn_data = 32.9
     gini_usa_data = 41.5
     usa_params = Specifications()
     usa_params.update_specifications(
@@ -196,19 +196,19 @@ def get_e_interp(S, age_wgts, age_wgts_80, abil_wgts, plot=False):
         emat_orig,
         age_wgts,
         abil_wgts,
-        gini_ind_data,
+        gini_jpn_data,
         gini_usa_data,
         gini_usa_model,
     ):
-        gini_ind_model = utils.Inequality(
+        gini_jpn_model = utils.Inequality(
             emat_orig * np.exp(a * emat_orig),
             age_wgts,
             abil_wgts,
             80,
             7,
         ).gini()
-        error = (gini_ind_data / gini_usa_data) - (
-            gini_ind_model / gini_usa_model
+        error = (gini_jpn_data / gini_usa_data) - (
+            gini_jpn_model / gini_usa_model
         )
         return error
 
@@ -218,7 +218,7 @@ def get_e_interp(S, age_wgts, age_wgts_80, abil_wgts, plot=False):
             emat_orig,
             age_wgts,
             abil_wgts,
-            gini_ind_data,
+            gini_jpn_data,
             gini_usa_data,
             gini_usa_model,
         ),
