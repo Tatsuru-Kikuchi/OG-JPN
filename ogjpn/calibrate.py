@@ -1,5 +1,5 @@
 from ogjpn import bequest_transmission, demographics
-from ogjpn import macro_params, transfer_distribution, income
+from ogjpn import macro_params, income
 import os
 import numpy as np
 from ogcore import txfunc
@@ -14,7 +14,7 @@ class Calibration:
         p,
         estimate_tax_functions=False,
         estimate_beta=False,
-        estimate_chi_n=False,
+        #estimate_chi_n=False,
         tax_func_path=None,
         iit_reform={},
         guid="",
@@ -25,7 +25,7 @@ class Calibration:
 
         self.estimate_tax_functions = estimate_tax_functions
         self.estimate_beta = estimate_beta
-        self.estimate_chi_n = estimate_chi_n
+        #self.estimate_chi_n = estimate_chi_n
         if estimate_tax_functions:
             self.tax_function_params = self.get_tax_function_parameters(
                 p,
@@ -45,10 +45,10 @@ class Calibration:
         # Macro estimation
         self.macro_params = macro_params.get_macro_params()
 
-        eta estimation
-        self.eta = transfer_distribution.get_transfer_matrix()
+        # eta estimation
+        #self.eta = transfer_distribution.get_transfer_matrix()
 
-        zeta estimation
+        # zeta estimation
         self.zeta = bequest_transmission.get_bequest_matrix()
 
         # demographics
@@ -366,7 +366,7 @@ class Calibration:
         #     dict["beta_annual"] = self.beta
         # if self.estimate_chi_n:
         #     dict["chi_n"] = self.chi_n
-        dict["eta"] = self.eta
+        #dict["eta"] = self.eta
         dict["zeta"] = self.zeta
         dict.update(self.macro_params)
         dict["e"] = self.e
