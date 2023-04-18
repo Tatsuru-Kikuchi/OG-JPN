@@ -1,4 +1,4 @@
-from ogjpn import demographics
+from ogjpn import bequest_transmission, demographics
 from ogjpn import macro_params, transfer_distribution, income
 import os
 import numpy as np
@@ -45,11 +45,11 @@ class Calibration:
         # Macro estimation
         self.macro_params = macro_params.get_macro_params()
 
-        # eta estimation
-        # self.eta = transfer_distribution.get_transfer_matrix()
+        eta estimation
+        self.eta = transfer_distribution.get_transfer_matrix()
 
-        # zeta estimation
-        # self.zeta = bequest_transmission.get_bequest_matrix()
+        zeta estimation
+        self.zeta = bequest_transmission.get_bequest_matrix()
 
         # demographics
         self.demographic_params = demographics.get_pop_objs(
@@ -366,8 +366,8 @@ class Calibration:
         #     dict["beta_annual"] = self.beta
         # if self.estimate_chi_n:
         #     dict["chi_n"] = self.chi_n
-        # dict["eta"] = self.eta
-        # dict["zeta"] = self.zeta
+        dict["eta"] = self.eta
+        dict["zeta"] = self.zeta
         dict.update(self.macro_params)
         dict["e"] = self.e
         dict.update(self.demographic_params)
