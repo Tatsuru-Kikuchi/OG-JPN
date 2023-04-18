@@ -61,7 +61,7 @@ p.update_specifications({'initial_debt_ratio': updated_params['initial_debt_rati
 
 The core maintainer of the OG-JPN repository is:
 
-* Tatsuru Kikuchi (GitHub handle: [Tatsuru_Kikuchi](https://github.com/Tatsuru-Kikuchi)), Research Officer, Faculty of Economics, The University of Tokyo.
+* *Tatsuru Kikuchi* (GitHub handle: [Tatsuru_Kikuchi](https://github.com/Tatsuru-Kikuchi)), Research Officer, Faculty of Economics, The University of Tokyo.
 
 ## Citing OG-JPN
 
