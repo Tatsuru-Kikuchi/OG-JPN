@@ -1,0 +1,883 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Tax Function Estimation Functions &#8212; OG-JPN</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'content/api/txfunc';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Utilities Functions" href="utils.html" />
+    <link rel="prev" title="Tax Functions" href="tax.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../intro/intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/OG-Core_logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../../_static/OG-Core_logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro/intro.html">
+                    OG-JPN
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Contributing to OG-JPN</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../contributing/contributor_guide.html">Contributor Guide</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">OG-JPN API</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="public_api.html">API</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="aggregates.html">Aggregates Equations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="elliptical_u_est.html">Elliptical Utility Function Estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="execute.html">Model Execution Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="firm.html">Firm Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fiscal.html">Fiscal Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="household.html">Household Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="output_plots.html">Output Plotting Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="output_tables.html">Output Table Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="parameter_plots.html">Parameter Plotting Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="parameter_tables.html">Parameter Table Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="parameters.html">Parameters Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tax.html">Tax Functions</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Tax Function Estimation Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="utils.html">Utilities Functions</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">OG-JPN Theory</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../theory/intro.html">Model Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../theory/demographics.html">Demographics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../theory/households.html">Households</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../theory/firms.html">Firms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../theory/government.html">Government</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../theory/open_economy.html">Open Economy Options</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../theory/financial.html">Financial Intermediary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../theory/market_clearing.html">Market Clearing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../theory/stationarization.html">Stationarization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../theory/equilibrium.html">Equilibrium</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendix</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../theory/derivations.html">Derivations</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">References</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../OGJPN_references.html">References</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Citations of OG-JPN</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../citations.html">Citations and use cases of OG-JPN</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/Tatsuru-Kikuchi/OG-JPN" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/Tatsuru-Kikuchi/OG-JPN/issues/new?title=Issue%20on%20page%20%2Fcontent/api/txfunc.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/content/api/txfunc.rst" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.rst</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Tax Function Estimation Functions</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-ogjpn.txfunc">ogjpn.txfunc</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section id="tax-function-estimation-functions">
+<span id="txfunc"></span><h1>Tax Function Estimation Functions<a class="headerlink" href="#tax-function-estimation-functions" title="Permalink to this heading">#</a></h1>
+<p><strong>txfunc.py modules</strong></p>
+<section id="module-ogjpn.txfunc">
+<span id="ogjpn-txfunc"></span><h2>ogjpn.txfunc<a class="headerlink" href="#module-ogjpn.txfunc" title="Permalink to this heading">#</a></h2>
+<p>tau_{s,t} is the effective tax rate, marginal tax rate on labor income,
+or the marginal tax rate on capital income, for a given age (s) in a
+particular year (t). x is total labor income, and y is total capital
+income.
+————————————————————————</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="ogjpn.txfunc.find_outliers">
+<span class="sig-prename descclassname"><span class="pre">ogjpn.txfunc.</span></span><span class="sig-name descname"><span class="pre">find_outliers</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sse_mat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">age_vec</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">se_mult</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start_year</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">varstr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">graph</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/ogjpn/txfunc.html#find_outliers"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ogjpn.txfunc.find_outliers" title="Permalink to this definition">#</a></dt>
+<dd><p>This function takes a matrix of sum of squared errors (SSE) from
+tax function estimations for each age (s) in each year of the budget
+window (t) and marks estimations that have outlier SSE.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>sse_mat</strong> (<em>Numpy array</em>) – SSE for each estimated tax function,
+size is BW x S</p></li>
+<li><p><strong>age_vec</strong> (<em>numpy array</em>) – vector of ages, length S</p></li>
+<li><p><strong>se_mult</strong> (<em>scalar</em>) – multiple of standard deviations before
+consider estimate an outlier</p></li>
+<li><p><strong>start_year</strong> (<em>int</em>) – first year of budget window</p></li>
+<li><p><strong>varstr</strong> (<em>str</em>) – name of tax function being evaluated</p></li>
+<li><p><strong>graph</strong> (<em>bool</em>) – whether to output graphs</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><dl class="simple">
+<dt>indicators of whether tax function</dt><dd><p>is outlier, size is BW x S</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>sse_big_mat (bool array_like)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ogjpn.txfunc.get_tax_rates">
+<span class="sig-prename descclassname"><span class="pre">ogjpn.txfunc.</span></span><span class="sig-name descname"><span class="pre">get_tax_rates</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">params</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">wgts</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tax_func_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rate_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">analytical_mtrs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mtr_capital</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">for_estimation</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/ogjpn/txfunc.html#get_tax_rates"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ogjpn.txfunc.get_tax_rates" title="Permalink to this definition">#</a></dt>
+<dd><p>Generates tax rates given income data and the parameters of the tax
+functions.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>params</strong> (<em>list</em>) – list of parameters of the tax function, or
+nonparametric function for tax function type “mono”</p></li>
+<li><p><strong>X</strong> (<em>array_like</em>) – labor income data</p></li>
+<li><p><strong>Y</strong> (<em>array_like</em>) – capital income data</p></li>
+<li><p><strong>wgts</strong> (<em>array_like</em>) – weights for data observations</p></li>
+<li><p><strong>tax_func_type</strong> (<em>str</em>) – functional form of tax functions</p></li>
+<li><p><strong>rate_type</strong> (<em>str</em>) – type of tax rate: mtrx, mtry, etr</p></li>
+<li><p><strong>analytical_mtrs</strong> (<em>bool</em>) – whether to compute marginal tax rates
+from the total tax function (for DEP functions only)</p></li>
+<li><p><strong>mtr_capital</strong> (<em>bool</em>) – whether analytical mtr on capital income</p></li>
+<li><p><strong>for_estimation</strong> (<em>bool</em>) – whether the results are used in
+estimation, if True, then tax rates are computed as
+deviations from the mean</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>model tax rates for each observation</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>txrates (array_like)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ogjpn.txfunc.replace_outliers">
+<span class="sig-prename descclassname"><span class="pre">ogjpn.txfunc.</span></span><span class="sig-name descname"><span class="pre">replace_outliers</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">param_list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sse_big_mat</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/ogjpn/txfunc.html#replace_outliers"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ogjpn.txfunc.replace_outliers" title="Permalink to this definition">#</a></dt>
+<dd><p>This function replaces outlier estimated tax function parameters
+with linearly interpolated tax function tax function parameters</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>param_list</strong> (<em>list</em>) – estimated tax function parameters or nonparametric
+functions, size is BW x S x #TaxParams</p></li>
+<li><p><strong>sse_big_mat</strong> (<em>bool</em><em>, </em><em>array_like</em>) – indicators of whether tax function
+is outlier, size is BW x S</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><dl class="simple">
+<dt>estimated and interpolated tax function</dt><dd><p>parameters, size BW x S x #TaxParams</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>param_arr_adj (array_like)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ogjpn.txfunc.tax_data_sample">
+<span class="sig-prename descclassname"><span class="pre">ogjpn.txfunc.</span></span><span class="sig-name descname"><span class="pre">tax_data_sample</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_etr</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.65</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_income</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_mtr</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.99</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/ogjpn/txfunc.html#tax_data_sample"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ogjpn.txfunc.tax_data_sample" title="Permalink to this definition">#</a></dt>
+<dd><p>Function to create sample tax data for estimation by dropping
+observations with extreme values.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>data</strong> (<em>DataFrame</em>) – raw data from microsimulation model</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>selected sample</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>data (DataFrame)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ogjpn.txfunc.tax_func_estimate">
+<span class="sig-prename descclassname"><span class="pre">ogjpn.txfunc.</span></span><span class="sig-name descname"><span class="pre">tax_func_estimate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">micro_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">BW</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">S</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">starting_age</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ending_age</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start_year</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2021</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">baseline</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">analytical_mtrs</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tax_func_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'DEP'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">age_specific</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">reform</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">{}</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">desc_data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">graph_data</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">graph_est</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">client</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_workers</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tax_func_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/ogjpn/txfunc.html#tax_func_estimate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ogjpn.txfunc.tax_func_estimate" title="Permalink to this definition">#</a></dt>
+<dd><p>This function performs analysis on the source data from microsimulation
+model and estimates functions for the effective tax rate (ETR), marginal
+tax rate on labor income (MTRx), and marginal tax rate on capital income
+(MTRy).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>micro_data</strong> (<em>dict</em>) – Dictionary of DataFrames with micro data</p></li>
+<li><p><strong>BW</strong> (<em>int</em>) – number of years in the budget window (the period
+over which tax policy is assumed to vary)</p></li>
+<li><p><strong>S</strong> (<em>int</em>) – number of model periods a model agent is economically
+active for</p></li>
+<li><p><strong>starting_age</strong> (<em>int</em>) – minimum age to estimate tax functions for</p></li>
+<li><p><strong>ending_age</strong> (<em>int</em>) – maximum age to estimate tax functions for</p></li>
+<li><p><strong>start_yr</strong> (<em>int</em>) – first year of budget window</p></li>
+<li><p><strong>baseline</strong> (<em>bool</em>) – whether these are the baseline tax functions</p></li>
+<li><p><strong>analytical_mtrs</strong> (<em>bool</em>) – whether to use the analytical derivation
+of the marginal tax rates (and thus only need to estimate
+the effective tax rate functions)</p></li>
+<li><p><strong>tax_func_type</strong> (<em>str</em>) – functional form of tax functions</p></li>
+<li><p><strong>age_specific</strong> (<em>bool</em>) – whether to estimate age specific tax
+functions</p></li>
+<li><p><strong>reform</strong> (<em>dict</em>) – policy reform dictionary for Tax-Calculator</p></li>
+<li><p><strong>data</strong> (<em>str</em><em> or </em><em>Pandas DataFrame</em>) – path to or data to use in
+Tax-Calculator</p></li>
+<li><p><strong>client</strong> (<em>Dask client object</em>) – client</p></li>
+<li><p><strong>num_workers</strong> (<em>int</em>) – number of workers to use for parallelization
+with Dask</p></li>
+<li><p><strong>tax_func_path</strong> (<em>str</em>) – path to save pickle with estimated tax
+function parameters to</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>dictionary with tax function parameters</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>dict_param (dict)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ogjpn.txfunc.tax_func_loop">
+<span class="sig-prename descclassname"><span class="pre">ogjpn.txfunc.</span></span><span class="sig-name descname"><span class="pre">tax_func_loop</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">t</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start_year</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s_min</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s_max</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">age_specific</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tax_func_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">analytical_mtrs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">desc_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">graph_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">graph_est</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_dir</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">numparams</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/ogjpn/txfunc.html#tax_func_loop"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ogjpn.txfunc.tax_func_loop" title="Permalink to this definition">#</a></dt>
+<dd><p>Estimates tax functions for a particular year.  Looped over.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>t</strong> (<em>int</em>) – year of tax data to estimated tax functions for</p></li>
+<li><p><strong>data</strong> (<em>Pandas DataFrame</em>) – tax return data for year t</p></li>
+<li><p><strong>start_yr</strong> (<em>int</em>) – first year of budget window</p></li>
+<li><p><strong>s_min</strong> (<em>int</em>) – minimum age to estimate tax functions for</p></li>
+<li><p><strong>s_max</strong> (<em>int</em>) – maximum age to estimate tax functions for</p></li>
+<li><p><strong>age_specific</strong> (<em>bool</em>) – whether to estimate age specific tax
+functions</p></li>
+<li><p><strong>tax_func_type</strong> (<em>str</em>) – functional form of tax functions</p></li>
+<li><p><strong>analytical_mtrs</strong> (<em>bool</em>) – whether to use the analytical derivation
+of the marginal tax rates (and thus only need to estimate
+the effective tax rate functions)</p></li>
+<li><p><strong>desc_data</strong> (<em>bool</em>) – whether to print descriptive statistics</p></li>
+<li><p><strong>graph_data</strong> (<em>bool</em>) – whether to plot data</p></li>
+<li><p><strong>graph_est</strong> (<em>bool</em>) – whether to plot estimated coefficients</p></li>
+<li><p><strong>output_dir</strong> (<em>str</em>) – path to save output to</p></li>
+<li><p><strong>numparams</strong> (<em>int</em>) – number of parameters in tax functions</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><p>tax function estimation output:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>TotPop_yr (int): total population derived from micro data</p></li>
+<li><dl class="simple">
+<dt>Pct_age (Numpy array): fraction of observations that are</dt><dd><p>in each age bin</p>
+</dd>
+</dl>
+</li>
+<li><p>AvgInc (scalar): mean income in the data</p></li>
+<li><p>AvgETR (scalar): mean effective tax rate in data</p></li>
+<li><dl class="simple">
+<dt>AvgMTRx (scalar): mean marginal tax rate on labor income</dt><dd><p>in data</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>AvgMTRy (scalar): mean marginal tax rate on capital income</dt><dd><p>in data</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>frac_tax_payroll (scalar): fraction of total tax revenue</dt><dd><p>the comes from payroll taxes</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>etrparam_arr (Numpy array): parameters of the effective</dt><dd><p>tax rate functions</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>etr_wsumsq_arr (Numpy array): weighted sum of squares from</dt><dd><p>estimation of the effective tax rate functions</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>etr_obs_arr (Numpy array): weighted sum of squares from</dt><dd><p>estimation of the effective tax rate functions</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>mtrxparam_arr (Numpy array): parameters of the marginal</dt><dd><p>tax rate on labor income functions</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>mtrx_wsumsq_arr (Numpy array): weighted sum of squares</dt><dd><p>from estimation of the marginal tax rate on labor income
+functions</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>mtrx_obs_arr (Numpy array): weighted sum of squares from</dt><dd><p>estimation of the marginal tax rate on labor income
+functions</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>mtryparam_arr (Numpy array): parameters of the marginal</dt><dd><p>tax rate on capital income functions</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>mtry_wsumsq_arr (Numpy array): weighted sum of squares</dt><dd><p>from estimation of the marginal tax rate on capital
+income functions</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>mtry_obs_arr (Numpy array): weighted sum of squares from</dt><dd><p>estimation of the marginal tax rate on capital income
+functions</p>
+</dd>
+</dl>
+</li>
+</ul>
+</div></blockquote>
+</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>(tuple)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ogjpn.txfunc.txfunc_est">
+<span class="sig-prename descclassname"><span class="pre">ogjpn.txfunc.</span></span><span class="sig-name descname"><span class="pre">txfunc_est</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rate_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tax_func_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">numparams</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_dir</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">graph</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/ogjpn/txfunc.html#txfunc_est"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ogjpn.txfunc.txfunc_est" title="Permalink to this definition">#</a></dt>
+<dd><p>This function uses tax tax rate and income data for individuals of a
+particular age (s) and a particular year (t) to estimate the
+parameters of a Cobb-Douglas aggregation function of two ratios of
+polynomials in labor income and capital income, respectively.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df</strong> (<em>Pandas DataFrame</em>) – 11 variables with N observations of tax
+rates</p></li>
+<li><p><strong>s</strong> (<em>int</em>) – age of individual, &gt;= 21</p></li>
+<li><p><strong>t</strong> (<em>int</em>) – year of analysis, &gt;= 2016</p></li>
+<li><p><strong>rate_type</strong> (<em>str</em>) – type of tax rate: mtrx, mtry, etr</p></li>
+<li><p><strong>tax_func_type</strong> (<em>str</em>) – functional form of tax functions</p></li>
+<li><p><strong>numparams</strong> (<em>int</em>) – number of parameters in the tax functions</p></li>
+<li><p><strong>output_dir</strong> (<em>str</em>) – output directory for saving plot files</p></li>
+<li><p><strong>graph</strong> (<em>bool</em>) – whether to plot the estimated functions compared
+to the data</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><p>tax function estimation output:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>params (Numpy array or function object): vector of estimated</p></li>
+</ul>
+<p>parameters or nonparametric function object
+* wsse (scalar): weighted sum of squared deviations from
+minimization
+* obs (int): number of observations in the data, &gt; 600</p>
+</div></blockquote>
+</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>(tuple)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ogjpn.txfunc.wsumsq">
+<span class="sig-prename descclassname"><span class="pre">ogjpn.txfunc.</span></span><span class="sig-name descname"><span class="pre">wsumsq</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">params</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/ogjpn/txfunc.html#wsumsq"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ogjpn.txfunc.wsumsq" title="Permalink to this definition">#</a></dt>
+<dd><p>This function generates the weighted sum of squared deviations of
+predicted values of tax rates (ETR, MTRx, or MTRy) from the tax
+rates from the data for the Cobb-Douglas functional form of the tax
+function.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>params</strong> (<em>tuple</em>) – tax function parameter values</p></li>
+<li><p><strong>args</strong> (<em>tuple</em>) – contains (fixed_tax_func_params, X, Y, txrates,
+wgts, tax_func_type, rate_type)</p></li>
+<li><p><strong>fixed_tax_func_params</strong> (<em>tuple</em>) – value of parameters of tax
+functions that are not estimated</p></li>
+<li><p><strong>X</strong> (<em>array_like</em>) – labor income data</p></li>
+<li><p><strong>Y</strong> (<em>array_like</em>) – capital income data</p></li>
+<li><p><strong>txrates</strong> (<em>array_like</em>) – tax rates data</p></li>
+<li><p><strong>wgts</strong> (<em>array_like</em>) – weights for data observations</p></li>
+<li><p><strong>tax_func_type</strong> (<em>str</em>) – functional form of tax functions</p></li>
+<li><p><strong>rate_type</strong> (<em>str</em>) – type of tax rate: mtrx, mtry, etr</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>weighted sum of squared deviations, &gt;0</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>wssqdev (scalar)</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./content/api"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="tax.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Tax Functions</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="utils.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Utilities Functions</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-ogjpn.txfunc">ogjpn.txfunc</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Tatsuru Kikuchi
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
