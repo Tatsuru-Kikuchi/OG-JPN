@@ -16,14 +16,12 @@ jobs:
       - name: Setup Miniconda
         uses: conda-incubator/setup-miniconda@v2
         with:
-          miniforge-variant: Mambaforge
-          activate-environment: ogjpn-dev
+          activate-environment: ogcore-dev
           environment-file: environment.yml
           python-version: 3.10
           auto-activate-base: false
 
       - name: Build # Build Jupyter Book
-        shell: bash -l {0}
         run: |
           pip install -e .
           pip install jupyter-book>=0.15.1
@@ -32,6 +30,7 @@ jobs:
           python -m ipykernel install --user --name=ogjpn-dev
           cd docs
           jb build ./book
+          
       - name: Deploy
         uses: Tatsuru-Kikuchi/github-pages-deploy-action@releases/v3
         with:
