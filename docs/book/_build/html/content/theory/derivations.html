@@ -1,0 +1,613 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Derivations &#8212; OG-JPN</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'content/theory/derivations';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="References" href="../OGJPN_references.html" />
+    <link rel="prev" title="Equilibrium" href="equilibrium.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../intro/intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/OG-Core_logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../../_static/OG-Core_logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro/intro.html">
+                    OG-JPN
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Contributing to OG-JPN</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../contributing/contributor_guide.html">Contributor Guide</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">OG-JPN API</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../api/public_api.html">API</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../api/aggregates.html">Aggregates Equations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/elliptical_u_est.html">Elliptical Utility Function Estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/execute.html">Model Execution Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/firm.html">Firm Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/fiscal.html">Fiscal Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/household.html">Household Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/output_plots.html">Output Plotting Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/output_tables.html">Output Table Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/parameter_plots.html">Parameter Plotting Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/parameter_tables.html">Parameter Table Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/parameters.html">Parameters Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/tax.html">Tax Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/txfunc.html">Tax Function Estimation Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/utils.html">Utilities Functions</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">OG-JPN Theory</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Model Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="demographics.html">Demographics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="households.html">Households</a></li>
+<li class="toctree-l1"><a class="reference internal" href="firms.html">Firms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="government.html">Government</a></li>
+<li class="toctree-l1"><a class="reference internal" href="open_economy.html">Open Economy Options</a></li>
+<li class="toctree-l1"><a class="reference internal" href="financial.html">Financial Intermediary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="market_clearing.html">Market Clearing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="stationarization.html">Stationarization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="equilibrium.html">Equilibrium</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendix</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Derivations</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">References</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../OGJPN_references.html">References</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Citations of OG-JPN</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../citations.html">Citations and use cases of OG-JPN</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/Tatsuru-Kikuchi/OG-JPN" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/Tatsuru-Kikuchi/OG-JPN/issues/new?title=Issue%20on%20page%20%2Fcontent/theory/derivations.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/content/theory/derivations.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Derivations</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#household-first-order-condition-for-industry-specific-consumption-demand">Household first order condition for industry-specific consumption demand</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#properties-of-the-ces-production-function">Properties of the CES Production Function</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#wages-as-a-function-of-interest-rates">Wages as a function of interest rates</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="derivations">
+<span id="chap-deriv"></span><h1>Derivations<a class="headerlink" href="#derivations" title="Permalink to this heading">#</a></h1>
+<p>This appendix contains derivations from the theory in the body of this book.</p>
+<section id="household-first-order-condition-for-industry-specific-consumption-demand">
+<span id="secappderivhhcons"></span><h2>Household first order condition for industry-specific consumption demand<a class="headerlink" href="#household-first-order-condition-for-industry-specific-consumption-demand" title="Permalink to this heading">#</a></h2>
+<p>The derivation for the household first order condition for industry-specific consumption demand <a class="reference internal" href="households.html#equation-eqhhfocci">(13)</a> is the following:</p>
+<div class="math notranslate nohighlight" id="equation-eqappderivhhconsfoc">
+<span class="eqno">(165)<a class="headerlink" href="#equation-eqappderivhhconsfoc" title="Permalink to this equation">#</a></span>\[\begin{split}  \tilde{p}_{i,t} = \tilde{p}_{j,s,t}\alpha_m(c_{i,j,s,t} - c_{min,i})^{\alpha_i-1}\prod_{u\neq i}^I\left(c_{u,j,s,t} - c_{min,u}\right)^{\alpha_u} \\
+  \tilde{p}_{i,t}(c_{i,j,s,t} - c_{min,i}) = \tilde{p}_{j,s,t}\alpha_i(c_{i,j,s,t} - c_{min,i})^{\alpha_i}\prod_{u\neq i}^I\left(c_{u,j,s,t} - c_{min,u}\right)^{\alpha_u} \\
+  \tilde{p}_{i,t}(c_{i,j,s,t} - c_{min,i}) = \tilde{p}_{j,s,t}\alpha_i\prod_{i=1}^I\left(c_{i,j,s,t} - c_{min,i}\right)^{\alpha_i} = \alpha_i \tilde{p}_{j,s,t}c_{j,s,t}\end{split}\]</div>
+</section>
+<section id="properties-of-the-ces-production-function">
+<span id="secappderivces"></span><h2>Properties of the CES Production Function<a class="headerlink" href="#properties-of-the-ces-production-function" title="Permalink to this heading">#</a></h2>
+<p>The constant elasticity of substitution (CES) production function of capital and labor was introduced by <span id="id1">[]</span> and further extended to a consumption aggregator by <span id="id2">[]</span>. The CES production function of private capital <span class="math notranslate nohighlight">\(K\)</span>, public capital <span class="math notranslate nohighlight">\(K_g\)</span> and labor <span class="math notranslate nohighlight">\(L\)</span> we use in Chapter <a class="reference internal" href="firms.html#chap-firms"><span class="std std-ref">Firms</span></a> is the following,</p>
+<div class="math notranslate nohighlight" id="equation-eqappderivcesprodfun">
+<span class="eqno">(166)<a class="headerlink" href="#equation-eqappderivcesprodfun" title="Permalink to this equation">#</a></span>\[\begin{split}  Y &amp;= F(K, K_g, L) \\
+  &amp;\equiv Z\biggl[(\gamma)^\frac{1}{\varepsilon}(K)^\frac{\varepsilon-1}{\varepsilon} + (\gamma_g)^\frac{1}{\varepsilon}(K_g)^\frac{\varepsilon-1}{\varepsilon} + (1-\gamma-\gamma_g)^\frac{1}{\varepsilon}(L)^\frac{\varepsilon-1}{\varepsilon}\biggr]^\frac{\varepsilon}{\varepsilon-1}\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(Y\)</span> is aggregate output (GDP), <span class="math notranslate nohighlight">\(Z\)</span> is total factor productivity, <span class="math notranslate nohighlight">\(\gamma\)</span> is a share parameter that represents private capital’s share of income in the Cobb-Douglas case (<span class="math notranslate nohighlight">\(\varepsilon=1\)</span>), <span class="math notranslate nohighlight">\(\gamma_g\)</span> is public capital’s share of income, and <span class="math notranslate nohighlight">\(\varepsilon\)</span> is the elasticity of substitution between capital and labor. The stationary version of this production function is given in Chapter <a class="reference internal" href="stationarization.html#chap-stnrz"><span class="std std-ref">Stationarization</span></a>. We drop the <span class="math notranslate nohighlight">\(m\)</span> and <span class="math notranslate nohighlight">\(t\)</span> subscripts, the ``<span class="math notranslate nohighlight">\(\:\,\hat{}\,\:\)</span>’’ stationary notation, and use the stationarized version of the production function for simplicity.</p>
+<p>The Cobb-Douglas production function is a nested case of the general CES production function with unit elasticity <span class="math notranslate nohighlight">\(\varepsilon=1\)</span>.</p>
+<div class="math notranslate nohighlight" id="equation-eqappderivces-cobbdoug">
+<span class="eqno">(167)<a class="headerlink" href="#equation-eqappderivces-cobbdoug" title="Permalink to this equation">#</a></span>\[  Y = Z(K)^\gamma(K_{g})^{\gamma_{g}}(L)^{1-\gamma-\gamma_{g}}\]</div>
+<p>The marginal productivity of private capital <span class="math notranslate nohighlight">\(MPK\)</span> is the derivative of the production function with respect to private capital <span class="math notranslate nohighlight">\(K\)</span>. Let the variable <span class="math notranslate nohighlight">\(\Omega\)</span> represent the expression inside the square brackets in the production function <a class="reference internal" href="#equation-eqappderivcesprodfun">(166)</a>.</p>
+<div class="math notranslate nohighlight" id="equation-eqappderivces-mpk">
+<span class="eqno">(168)<a class="headerlink" href="#equation-eqappderivces-mpk" title="Permalink to this equation">#</a></span>\[\begin{split}  MPK &amp;\equiv \frac{\partial F}{\partial K} = \left(\frac{\varepsilon}{\varepsilon-1}\right)Z\left[\Omega\right]^\frac{1}{\varepsilon-1}\gamma^\frac{1}{\varepsilon}\left(\frac{\varepsilon-1}{\varepsilon}\right)(K)^{-\frac{1}{\varepsilon}} \\
+  &amp;= Z\left[\Omega\right]^\frac{1}{\varepsilon-1}\left(\frac{\gamma}{K}\right)^\frac{1}{\varepsilon} = \frac{Z\left[\Omega\right]^\frac{1}{\varepsilon-1}}{Z^\frac{1}{\varepsilon-1}\left[\Omega\right]^\frac{1}{\varepsilon-1}}\left(\frac{\gamma}{K}\right)^\frac{1}{\varepsilon}Y^\frac{1}{\varepsilon} \\
+  &amp;= (Z)^\frac{\varepsilon-1}{\varepsilon}\left(\gamma\frac{Y}{K}\right)^\frac{1}{\varepsilon}\end{split}\]</div>
+<p>The marginal productivity of public capital <span class="math notranslate nohighlight">\(MPK_g\)</span> is the derivative of the production function with respect to public capital <span class="math notranslate nohighlight">\(K_g\)</span>.</p>
+<div class="math notranslate nohighlight" id="equation-eqappderivces-mpkg">
+<span class="eqno">(169)<a class="headerlink" href="#equation-eqappderivces-mpkg" title="Permalink to this equation">#</a></span>\[\begin{split}  MPK_g &amp;\equiv \frac{\partial F}{\partial K_g} = \left(\frac{\varepsilon}{\varepsilon-1}\right)Z\left[\Omega\right]^\frac{1}{\varepsilon-1}\gamma_g^\frac{1}{\varepsilon}\left(\frac{\varepsilon-1}{\varepsilon}\right)(K_g)^{-\frac{1}{\varepsilon}} \\
+  &amp;= Z\left[\Omega\right]^\frac{1}{\varepsilon-1}\left(\frac{\gamma_g}{K_g}\right)^\frac{1}{\varepsilon} = \frac{Z\left[\Omega\right]^\frac{1}{\varepsilon-1}}{Z^\frac{1}{\varepsilon-1}\left[\Omega\right]^\frac{1}{\varepsilon-1}}\left(\frac{\gamma_g}{K_g}\right)^\frac{1}{\varepsilon}Y^\frac{1}{\varepsilon} \\
+  &amp;= (Z)^\frac{\varepsilon-1}{\varepsilon}\left(\gamma_g\frac{Y}{K_g}\right)^\frac{1}{\varepsilon}\end{split}\]</div>
+<p>The marginal productivity of labor <span class="math notranslate nohighlight">\(MPL\)</span> is the derivative of the production function with respect to labor <span class="math notranslate nohighlight">\(L\)</span>.</p>
+<div class="math notranslate nohighlight" id="equation-eqappderivces-mpl">
+<span class="eqno">(170)<a class="headerlink" href="#equation-eqappderivces-mpl" title="Permalink to this equation">#</a></span>\[\begin{split}  MPL &amp;\equiv \frac{\partial F}{\partial L} = \left(\frac{\varepsilon}{\varepsilon-1}\right)Z\left[\Omega\right]^\frac{1}{\varepsilon-1}(1-\gamma-\gamma_g)^\frac{1}{\varepsilon}\left(\frac{\varepsilon-1}{\varepsilon}\right)(L)^{-\frac{1}{\varepsilon}} \\
+  &amp;= Z\left[\Omega\right]^\frac{1}{\varepsilon-1}\left(\frac{1-\gamma-\gamma_g}{L}\right)^\frac{1}{\varepsilon} = \frac{Z\left[\Omega\right]^\frac{1}{\varepsilon-1}}{Z^\frac{1}{\varepsilon-1}\left[\Omega\right]^\frac{1}{\varepsilon-1}}\left(\frac{1-\gamma-\gamma_g}{L}\right)^\frac{1}{\varepsilon}Y^\frac{1}{\varepsilon} \\
+  &amp;= (Z)^\frac{\varepsilon-1}{\varepsilon}\left([1-\gamma-\gamma_g]\frac{Y}{L}\right)^\frac{1}{\varepsilon}\end{split}\]</div>
+<section id="wages-as-a-function-of-interest-rates">
+<span id="secappderivceswr"></span><h3>Wages as a function of interest rates<a class="headerlink" href="#wages-as-a-function-of-interest-rates" title="Permalink to this heading">#</a></h3>
+<p>The below shows that with the addition of public capital as a third factor of production, wages and interest rates are more than a function of the capital labor ratio.  This means that in the solution method for <code class="docutils literal notranslate"><span class="pre">OG-JPN</span></code> we will need to guess both the interest rate <span class="math notranslate nohighlight">\(r_t\)</span> and wage <span class="math notranslate nohighlight">\(w_t\)</span>.</p>
+<div class="math notranslate nohighlight" id="equation-eqappderivces-yl">
+<span class="eqno">(171)<a class="headerlink" href="#equation-eqappderivces-yl" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{split}
+    Y &amp;= Z\biggl[(\gamma)^\frac{1}{\varepsilon}(K)^\frac{\varepsilon-1}{\varepsilon} + (\gamma_{g})^\frac{1}{\varepsilon}(K_{g})^\frac{\varepsilon-1}{\varepsilon} + (1-\gamma-\gamma_{g})^\frac{1}{\varepsilon}(L)^\frac{\varepsilon-1}{\varepsilon}\biggr]^\frac{\varepsilon}{\varepsilon-1} \\
+    &amp;= Z\biggl[(\gamma)^\frac{1}{\varepsilon}(K)^\frac{\varepsilon-1}{\varepsilon}\left(\frac{L^\frac{\varepsilon-1}{\varepsilon}}{L^\frac{\varepsilon-1}{\varepsilon}}\right) + (\gamma_{g})^\frac{1}{\varepsilon}(K_{g})^\frac{\varepsilon-1}{\varepsilon}\left(\frac{L^\frac{\varepsilon-1}{\varepsilon}}{L^\frac{\varepsilon-1}{\varepsilon}}\right) + (1-\gamma-\gamma_{g})^\frac{1}{\varepsilon}(L)^\frac{\varepsilon-1}{\varepsilon}\biggr]^\frac{\varepsilon}{\varepsilon-1}
+    \\
+    &amp;= ZL\biggl[(\gamma)^\frac{1}{\varepsilon}\left(\frac{K}{L}\right)^\frac{\varepsilon-1}{\varepsilon} + (\gamma_{g})^\frac{1}{\varepsilon}\left(\frac{K_{g}}{L}\right)^\frac{\varepsilon-1}{\varepsilon}+ (1-\gamma-\gamma_{g})^\frac{1}{\varepsilon}\biggr]^\frac{\varepsilon}{\varepsilon-1}\\
+    \Rightarrow\quad \frac{Y}{L} &amp;= Z\biggl[(\gamma)^\frac{1}{\varepsilon}\left(\frac{K}{L}\right)^\frac{\varepsilon-1}{\varepsilon} + (\gamma_{g})^\frac{1}{\varepsilon}\left(\frac{K_{g}}{L}\right)^\frac{\varepsilon-1}{\varepsilon}+ (1-\gamma-\gamma_{g})^\frac{1}{\varepsilon}\biggr]^\frac{\varepsilon}{\varepsilon-1}
+\end{split}\end{split}\]</div>
+<div class="math notranslate nohighlight" id="equation-eqappderivces-yk">
+<span class="eqno">(172)<a class="headerlink" href="#equation-eqappderivces-yk" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{split}
+    Y &amp;= Z\biggl[(\gamma)^\frac{1}{\varepsilon}(K)^\frac{\varepsilon-1}{\varepsilon} + (\gamma_{g})^\frac{1}{\varepsilon}(K_{g})^\frac{\varepsilon-1}{\varepsilon} + (1-\gamma-\gamma_{g})^\frac{1}{\varepsilon}(L)^\frac{\varepsilon-1}{\varepsilon}\biggr]^\frac{\varepsilon}{\varepsilon-1} \\
+    &amp;= Z\biggl[(\gamma)^\frac{1}{\varepsilon}(K)^\frac{\varepsilon-1}{\varepsilon} + (\gamma_{g})^\frac{1}{\varepsilon}(K_{g})^\frac{\varepsilon-1}{\varepsilon}\left(\frac{K^\frac{\varepsilon-1}{\varepsilon}}{K^\frac{\varepsilon-1}{\varepsilon}}\right) + (1-\gamma-\gamma_{g})^\frac{1}{\varepsilon}(L)^\frac{\varepsilon-1}{\varepsilon}\left(\frac{K^\frac{\varepsilon-1}{\varepsilon}}{K^\frac{\varepsilon-1}{\varepsilon}}\right)\biggr]^\frac{\varepsilon}{\varepsilon-1}\\
+    &amp;= ZK\biggl[(\gamma)^\frac{1}{\varepsilon} + (\gamma_{g})^\frac{1}{\varepsilon}\left(\frac{K_{g}}{K}\right)^\frac{\varepsilon-1}{\varepsilon} + (1-\gamma-\gamma_{g})^\frac{1}{\varepsilon}\left(\frac{L}{K}\right)^\frac{\varepsilon-1}{\varepsilon}\biggr]^\frac{\varepsilon}{\varepsilon-1} \\
+    \Rightarrow\quad \frac{Y}{K} &amp;= Z\biggl[(\gamma)^\frac{1}{\varepsilon} + (\gamma_{g})^\frac{1}{\varepsilon}\left(\frac{K_{g}}{K}\right)^\frac{\varepsilon-1}{\varepsilon} + (1-\gamma-\gamma_{g})^\frac{1}{\varepsilon}\left(\frac{L}{K}\right)^\frac{\varepsilon-1}{\varepsilon}\biggr]^\frac{\varepsilon}{\varepsilon-1}
+\end{split}\end{split}\]</div>
+<p>Solving for the firm’s first order conditions for capital and labor demand from profit maximization <a class="reference internal" href="stationarization.html#equation-eqstnrzprofit">(117)</a> gives the following equations in their respective stationarized forms from Chapter <a class="reference internal" href="stationarization.html#chap-stnrz"><span class="std std-ref">Stationarization</span></a>.</p>
+<div class="math notranslate nohighlight" id="equation-eqfirmfoc-l-der">
+<span class="eqno">(173)<a class="headerlink" href="#equation-eqfirmfoc-l-der" title="Permalink to this equation">#</a></span>\[    w = (Z_t)^\frac{\varepsilon-1}{\varepsilon}\left[(1-\gamma-\gamma_{g})\frac{Y}{L}\right]^\frac{1}{\varepsilon}\]</div>
+<div class="math notranslate nohighlight" id="equation-eqfirmfoc-k-der">
+<span class="eqno">(174)<a class="headerlink" href="#equation-eqfirmfoc-k-der" title="Permalink to this equation">#</a></span>\[    r = (1 - \tau^{corp})(Z)^\frac{\varepsilon-1}{\varepsilon}\left[\gamma\frac{Y}{K}\right]^\frac{1}{\varepsilon} - \delta + \tau^{corp}\delta^\tau\]</div>
+<p>As can be seen from <a class="reference internal" href="#equation-eqfirmfoc-l-der">(173)</a> and <a class="reference internal" href="#equation-eqfirmfoc-k-der">(174)</a>, the wage <span class="math notranslate nohighlight">\(w\)</span> and interest rate <span class="math notranslate nohighlight">\(r\)</span> are functions of <span class="math notranslate nohighlight">\(Y/L\)</span> and <span class="math notranslate nohighlight">\(Y/K\)</span>, respectively. Equations <a class="reference internal" href="#equation-eqappderivces-yl">(171)</a> and <a class="reference internal" href="#equation-eqappderivces-yk">(172)</a> show that both <span class="math notranslate nohighlight">\(Y/L\)</span> and <span class="math notranslate nohighlight">\(Y/K\)</span> are functions of the capital-labor ratio <span class="math notranslate nohighlight">\(K/L\)</span>, the public-capital-labor ratio, <span class="math notranslate nohighlight">\(K_{g}/L\)</span>, and the public-private capital ratio, <span class="math notranslate nohighlight">\(K/K_{g}\)</span>. We cannot solve these equations for <span class="math notranslate nohighlight">\(r\)</span> and <span class="math notranslate nohighlight">\(w\)</span> solely as functions of the same ratios.</p>
+<p>In the Cobb-Douglas unit elasticity case (<span class="math notranslate nohighlight">\(\varepsilon=1\)</span>) of the CES production function, the first order conditions are:</p>
+<div class="math notranslate nohighlight" id="equation-eqappderivces-cdfocl">
+<span class="eqno">(175)<a class="headerlink" href="#equation-eqappderivces-cdfocl" title="Permalink to this equation">#</a></span>\[  \text{if}\:\:\,\varepsilon=1:\quad w = (1-\gamma-\gamma_g)Z\left(\frac{K}{L}\right)^\gamma \left(\frac{K_{g}}{L}\right)^{\gamma_{g}}\]</div>
+<div class="math notranslate nohighlight" id="equation-eqappderivces-cdfock">
+<span class="eqno">(176)<a class="headerlink" href="#equation-eqappderivces-cdfock" title="Permalink to this equation">#</a></span>\[ \text{if}\:\:\:\varepsilon=1:\quad r = (1 - \tau^{corp})\gamma Z\left(\frac{K_{g}}{K}\right)^{\gamma_{g}}\left(\frac{L}{K}\right)^{1-\gamma-\gamma_{g}} - \delta + \tau^{corp}\delta^\tau\]</div>
+<p>Again, even if this simple case, we cannot solve for <span class="math notranslate nohighlight">\(r\)</span> as a function of <span class="math notranslate nohighlight">\(w\)</span> for the reasons above.</p>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./content/theory"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="equilibrium.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Equilibrium</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../OGJPN_references.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">References</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#household-first-order-condition-for-industry-specific-consumption-demand">Household first order condition for industry-specific consumption demand</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#properties-of-the-ces-production-function">Properties of the CES Production Function</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#wages-as-a-function-of-interest-rates">Wages as a function of interest rates</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Tatsuru Kikuchi
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
