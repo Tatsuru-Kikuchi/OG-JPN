@@ -11,24 +11,24 @@ from matplotlib.pyplot import plot as pp
 import urllib3
 import ssl
 
-class CustomHttpAdapter (requests.adapters.HTTPAdapter):
-    # "Transport adapter" that allows us to use custom ssl_context.
+# class CustomHttpAdapter (requests.adapters.HTTPAdapter):
+#     # "Transport adapter" that allows us to use custom ssl_context.
 
-    def __init__(self, ssl_context=None, **kwargs):
-        self.ssl_context = ssl_context
-        super().__init__(**kwargs)
+#     def __init__(self, ssl_context=None, **kwargs):
+#         self.ssl_context = ssl_context
+#         super().__init__(**kwargs)
 
-    def init_poolmanager(self, connections, maxsize, block=False):
-        self.poolmanager = urllib3.poolmanager.PoolManager(
-            num_pools=connections, maxsize=maxsize,
-            block=block, ssl_context=self.ssl_context)
+#     def init_poolmanager(self, connections, maxsize, block=False):
+#         self.poolmanager = urllib3.poolmanager.PoolManager(
+#             num_pools=connections, maxsize=maxsize,
+#             block=block, ssl_context=self.ssl_context)
 
-def get_legacy_session():
-    ctx = ssl.create_default_context(ssl.Purpose.SERVER_AUTH)
-    ctx.options |= 0x4  # OP_LEGACY_SERVER_CONNECT
-    session = requests.session()
-    session.mount('https://', CustomHttpAdapter(ctx))
-    return session
+# def get_legacy_session():
+#     ctx = ssl.create_default_context(ssl.Purpose.SERVER_AUTH)
+#     ctx.options |= 0x4  # OP_LEGACY_SERVER_CONNECT
+#     session = requests.session()
+#     session.mount('https://', CustomHttpAdapter(ctx))
+#     return session
 
 locations = "392"  # UN code for JPN
 # create output director for figures
@@ -58,22 +58,35 @@ def get_un_data(indicators, locations, start_year, end_year):
     """
     endpoint_url = 'https://population.un.org/dataportalapi/api/v1'
     url = endpoint_url + '/data/indicators/' + indicators + '/locations/' + locations + '/start/' + str(start_year) + '/end/' + str(end_year) + '?pageSize=100&pagingInHeader=false&format=json'
-    r = requests.get(url)
-    res = r.json()
-    df = pd.json_normalize(res["data"])
-    while res["nextPage"] is not None:
-    #    for page in range(2,99):
-        url = endpoint_url + '/data/indicators/' + indicators + '/locations/' + locations + '/start/' + str(start_year) + '/end/' + str(end_year) + '?pageSize=100&pagingInHeader=false&format=json'
+    #res = r.json()
+    #df = pd.json_normalize(res["data"])
+    try:
         r = requests.get(url)
-        res = r.json()
-        df_temp = pd.json_normalize(res["data"])
-        df = pd.concat([df, df_temp])
-            #df.rename(columns=df.iloc[0], inplace = True)
-            #df.drop(df.index[0], inplace = True)
-    #except RequestException as e:
-    #    raise SystemExit(e)
+        r.raise_for_status()
+        if 'json' in r.headers.get('content-type'):
+            res = r.json()
+            df = pd.json_normalize(res["data"])
+        else:
+            res = r.text
+            df = pd.json_normalize(res["data"])
+        while res["nextPage"] is not None:
+        #    for page in range(2,99):
+            url = endpoint_url + '/data/indicators/' + indicators + '/locations/' + locations + '/start/' + str(start_year) + '/end/' + str(end_year) + '?pageSize=100&pagingInHeader=false&format=json'
+            r = requests.get(url)
+            if 'json' in r.headers.get('content-type'):
+                res = r.json()
+                df_temp = pd.json_normalize(res["data"])
+                df = pd.concat([df, df_temp])
+            else:
+                res = r.text
+                df_temp = pd.json_normalize(res["data"])
+                df = pd.concat([df, df_temp])
+                #df.rename(columns=df.iloc[0], inplace = True)
+                #df.drop(df.index[0], inplace = True)
+    except RequestException as e:
+        raise SystemExit(e)
     #return df
-    #assert len(df)==j['total'], "DataFrame observations do not match total number of records in response"
+    assert len(df)==j['total'], "DataFrame observations do not match total number of records in response"
     df = df[df.variant == "Median"]
     df = df[df.sex == "Both sexes"][["timeLabel", "ageLabel", "value"]]
     df.rename({"timeLabel": "year", "ageLabel": "age"}, axis=1, inplace=True)
