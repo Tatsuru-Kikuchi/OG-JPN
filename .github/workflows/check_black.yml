@@ -4,10 +4,11 @@ on: [push, pull_request]
 
 jobs:
   lint:
-    runs-on: mac-latest
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-python@v2
       - uses: psf/black@stable
         with:
-          args: ". -l 79 --check"
+          options: "-l 79 --check"
+          src: "."
