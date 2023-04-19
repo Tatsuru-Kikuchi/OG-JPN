@@ -11,7 +11,7 @@ jobs:
   build-and-deploy:
     if: github.repository == 'Tatsuru-Kikuchi/OG-JPN'
     concurrency: ci-${{ github.ref }} # Recommended if you intend to make multiple deployments in quick succession.
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v3
