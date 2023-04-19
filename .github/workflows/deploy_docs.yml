@@ -16,7 +16,7 @@ jobs:
       - name: Setup Miniconda
         uses: conda-incubator/setup-miniconda@v2
         with:
-          activate-environment: ogcore-dev
+          activate-environment: ogjpn-dev
           environment-file: environment.yml
           python-version: 3.10
           auto-activate-base: false
@@ -25,7 +25,6 @@ jobs:
         run: |
           pip install -e .
           pip install jupyter-book>=0.15.1
-          pip install jupyter-client>=8.2.0
           pip install sphinxcontrib-bibtex>=2.5.0
           python -m ipykernel install --user --name=ogjpn-dev
           cd docs
