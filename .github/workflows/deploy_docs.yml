@@ -1,11 +1,8 @@
 name: Build and Deploy Jupyter Book documentation
-  on:
+on:
   push:
     branches:
       - master
-      
-permissions:
-  contents: read, write
 
 jobs:
   build-and-deploy:
@@ -28,13 +25,11 @@ jobs:
           pip install -e .
           pip install jupyter-book>=0.15.1
           pip install sphinxcontrib-bibtex>=2.5.0
-          python -m ipykernel install --user --name=ogjpn-dev
           cd docs
           jb build ./book
           
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           BRANCH: gh-pages # The branch the action should deploy to.
           FOLDER: docs/book/_build/html # The folder the action should deploy.
