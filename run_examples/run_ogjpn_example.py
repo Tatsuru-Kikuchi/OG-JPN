@@ -4,11 +4,13 @@ Example script for setting policy and running OG-JPN.
 
 # import modules
 import multiprocessing
-from distributed import Client
+#from distributed import Client
+from dask.distributed import Client, LocalCluster
 import numpy as np
 import os
 import json
 import time
+from time import sleep
 import copy
 import pandas as pd
 from ogjpn.calibrate import Calibration
@@ -29,7 +31,13 @@ import matplotlib.pyplot as plt
 
 def main():
     # Define parameters to use for multiprocessing
-    client = Client()
+    with LocalCluster(dashboard_address=':3258') as cluster:
+        with Client(cluster) as client:
+            print(client)
+    sleep(10)
+    with LocalCluster(dashboard_address=':3258') as cluster:
+         with Client(cluster) as client:
+            print(client)
     num_workers = min(multiprocessing.cpu_count(), 7)
     print("Number of workers = ", num_workers)
     run_start_time = time.time()
