@@ -1,0 +1,975 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Parameter Plotting Functions &#8212; OG-JPN</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'content/api/parameter_plots';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Parameter Table Functions" href="parameter_tables.html" />
+    <link rel="prev" title="Output Table Functions" href="output_tables.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../intro/intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/OG-Core_logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../../_static/OG-Core_logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro/intro.html">
+                    OG-JPN
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Contributing to OG-JPN</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../contributing/contributor_guide.html">Contributor Guide</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">OG-JPN API</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="public_api.html">API</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="aggregates.html">Aggregates Equations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="elliptical_u_est.html">Elliptical Utility Function Estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="execute.html">Model Execution Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="firm.html">Firm Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fiscal.html">Fiscal Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="household.html">Household Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="output_plots.html">Output Plotting Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="output_tables.html">Output Table Functions</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Parameter Plotting Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="parameter_tables.html">Parameter Table Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="parameters.html">Parameters Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tax.html">Tax Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="txfunc.html">Tax Function Estimation Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="utils.html">Utilities Functions</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">OG-JPN Theory</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../theory/intro.html">Model Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../theory/demographics.html">Demographics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../theory/households.html">Households</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../theory/firms.html">Firms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../theory/government.html">Government</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../theory/open_economy.html">Open Economy Options</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../theory/financial.html">Financial Intermediary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../theory/market_clearing.html">Market Clearing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../theory/stationarization.html">Stationarization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../theory/equilibrium.html">Equilibrium</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendix</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../theory/derivations.html">Derivations</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">References</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../OGJPN_references.html">References</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Citations of OG-JPN</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../citations.html">Citations and use cases of OG-JPN</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/Tatsuru-Kikuchi/OG-JPN" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/Tatsuru-Kikuchi/OG-JPN/issues/new?title=Issue%20on%20page%20%2Fcontent/api/parameter_plots.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/content/api/parameter_plots.rst" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.rst</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Parameter Plotting Functions</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-ogjpn.parameter_plots">ogjpn.parameter_plots</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section id="parameter-plotting-functions">
+<span id="parameter-plots"></span><h1>Parameter Plotting Functions<a class="headerlink" href="#parameter-plotting-functions" title="Permalink to this heading">#</a></h1>
+<p><strong>parameter_plots.py modules</strong></p>
+<section id="module-ogjpn.parameter_plots">
+<span id="ogjpn-parameter-plots"></span><h2>ogjpn.parameter_plots<a class="headerlink" href="#module-ogjpn.parameter_plots" title="Permalink to this heading">#</a></h2>
+<dl class="py function">
+<dt class="sig sig-object py" id="ogjpn.parameter_plots.gen_3Dscatters_hist">
+<span class="sig-prename descclassname"><span class="pre">ogjpn.parameter_plots.</span></span><span class="sig-name descname"><span class="pre">gen_3Dscatters_hist</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_dir</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/ogjpn/parameter_plots.html#gen_3Dscatters_hist"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ogjpn.parameter_plots.gen_3Dscatters_hist" title="Permalink to this definition">#</a></dt>
+<dd><p>Create 3-D scatterplots and corresponding 3D histogram of ETR, MTRx,
+and MTRy as functions of labor income and capital income with
+truncated data in the income dimension</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>df</strong> (<em>Pandas DataFrame</em>) – 11 variables with N observations of tax
+rates</p></li>
+<li><p><strong>s</strong> (<em>int</em>) – age of individual, &gt;= 21</p></li>
+<li><p><strong>t</strong> (<em>int</em>) – year of analysis, &gt;= 2016</p></li>
+<li><p><strong>output_dir</strong> (<em>str</em>) – output directory for saving plot files</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ogjpn.parameter_plots.plot_2D_taxfunc">
+<span class="sig-prename descclassname"><span class="pre">ogjpn.parameter_plots.</span></span><span class="sig-name descname"><span class="pre">plot_2D_taxfunc</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">year</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start_year</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tax_param_list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">age</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tax_func_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">['DEP']</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rate_type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'etr'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">over_labinc</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">other_inc_val</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_inc_amt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1000000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_list</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labels</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">['1st</span> <span class="pre">Functions']</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/ogjpn/parameter_plots.html#plot_2D_taxfunc"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ogjpn.parameter_plots.plot_2D_taxfunc" title="Permalink to this definition">#</a></dt>
+<dd><p>This function plots OG-Core tax functions in two dimensions.
+The tax rates are plotted over capital or labor income, as
+entered by the user.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>year</strong> (<em>int</em>) – year of policy tax functions represent</p></li>
+<li><p><strong>start_year</strong> (<em>int</em>) – first year tax functions estimated for in
+tax_param_list elements</p></li>
+<li><p><strong>tax_param_list</strong> (<em>list</em>) – list of arrays containing tax function
+parameters</p></li>
+<li><p><strong>age</strong> (<em>int</em>) – age for tax functions to plot, use None if tax
+function parameters were not age specific</p></li>
+<li><p><strong>tax_func_type</strong> (<em>list</em>) – list of strings in [“DEP”, “DEP_totalinc”,
+“GS”, “linear”] and specifies functional form of tax functions
+in tax_param_list</p></li>
+<li><p><strong>rate_type</strong> (<em>str</em>) – string that is in [“etr”, “mtrx”, “mtry”] and
+determines the type of tax rate that is plotted</p></li>
+<li><p><strong>over_labinc</strong> (<em>bool</em>) – indicates that x-axis of the plot is over
+labor income, if False then plot is over capital income</p></li>
+<li><p><strong>other_inc_val</strong> (<em>scalar</em>) – dollar value at which to hold constant
+the amount of income that is not represented on the x-axis</p></li>
+<li><p><strong>max_inc_amt</strong> (<em>scalar</em>) – largest income amount to represent on the
+x-axis of the plot</p></li>
+<li><p><strong>data_list</strong> (<em>list</em>) – list of DataFrames with data to scatter plot
+with tax functions, needs to be of format output from
+ogcore.get_micro_data.get_data</p></li>
+<li><p><strong>labels</strong> (<em>list</em>) – list of labels for tax function parameters</p></li>
+<li><p><strong>title</strong> (<em>str</em>) – title for the plot</p></li>
+<li><p><strong>path</strong> (<em>str</em>) – path to which to save plot, if None then figure
+returned</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>plot of tax functions</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>fig (Matplotlib plot object)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ogjpn.parameter_plots.plot_ability_profiles">
+<span class="sig-prename descclassname"><span class="pre">ogjpn.parameter_plots.</span></span><span class="sig-name descname"><span class="pre">plot_ability_profiles</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_title</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/ogjpn/parameter_plots.html#plot_ability_profiles"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ogjpn.parameter_plots.plot_ability_profiles" title="Permalink to this definition">#</a></dt>
+<dd><p>Create a plot of earnings ability profiles.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>p</strong> (<em>OG-Core Specifications class</em>) – parameters object</p></li>
+<li><p><strong>path</strong> (<em>string</em>) – path to save figure to</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>plot of earnings ability profiles</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>fig (Matplotlib plot object)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ogjpn.parameter_plots.plot_chi_n">
+<span class="sig-prename descclassname"><span class="pre">ogjpn.parameter_plots.</span></span><span class="sig-name descname"><span class="pre">plot_chi_n</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_title</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/ogjpn/parameter_plots.html#plot_chi_n"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ogjpn.parameter_plots.plot_chi_n" title="Permalink to this definition">#</a></dt>
+<dd><p>Create a plot of showing the values of the chi_n parameters.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>p</strong> (<em>OG-Core Specifications class</em>) – parameters object</p></li>
+<li><p><strong>path</strong> (<em>string</em>) – path to save figure to</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>plot of chi_n parameters</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>fig (Matplotlib plot object)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ogjpn.parameter_plots.plot_elliptical_u">
+<span class="sig-prename descclassname"><span class="pre">ogjpn.parameter_plots.</span></span><span class="sig-name descname"><span class="pre">plot_elliptical_u</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">plot_MU</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_title</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/ogjpn/parameter_plots.html#plot_elliptical_u"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ogjpn.parameter_plots.plot_elliptical_u" title="Permalink to this definition">#</a></dt>
+<dd><p>Create a plot of showing the fit of the elliptical utility function.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>p</strong> (<em>OG-Core Specifications class</em>) – parameters object</p></li>
+<li><p><strong>plot_MU</strong> (<em>boolean</em>) – whether plot marginal utility or utility in
+levels</p></li>
+<li><p><strong>path</strong> (<em>string</em>) – path to save figure to</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>plot of elliptical vs CFE utility</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>fig (Matplotlib plot object)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ogjpn.parameter_plots.plot_fert_rates">
+<span class="sig-prename descclassname"><span class="pre">ogjpn.parameter_plots.</span></span><span class="sig-name descname"><span class="pre">plot_fert_rates</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fert_func</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">age_midp</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">totpers</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_yr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_yr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fert_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">fert_rates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_dir</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/ogjpn/parameter_plots.html#plot_fert_rates"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ogjpn.parameter_plots.plot_fert_rates" title="Permalink to this definition">#</a></dt>
+<dd><p>Plot fertility rates from the data along with smoothed function to
+use for model fertility rates.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>fert_func</strong> (<em>Scipy interpolation object</em>) – interpolated fertility
+rates</p></li>
+<li><p><strong>age_midp</strong> (<em>NumPy array</em>) – midpoint of age for each age group in
+data</p></li>
+<li><p><strong>totpers</strong> (<em>int</em>) – total number of agent life periods (E+S), &gt;= 3</p></li>
+<li><p><strong>min_yr</strong> (<em>int</em>) – age in years at which agents are born, &gt;= 0</p></li>
+<li><p><strong>max_yr</strong> (<em>int</em>) – age in years at which agents die with certainty,
+&gt;= 4</p></li>
+<li><p><strong>fert_data</strong> (<em>NumPy array</em>) – fertility rates by age group from data</p></li>
+<li><p><strong>fert_rates</strong> (<em>NumPy array</em>) – fitted fertility rates for each of
+totpers</p></li>
+<li><p><strong>output_dir</strong> (<em>str</em>) – path to save figure to, if None then figure
+is returned</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>plot of fertility rates</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>fig (Matplotlib plot object)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ogjpn.parameter_plots.plot_imm_fixed">
+<span class="sig-prename descclassname"><span class="pre">ogjpn.parameter_plots.</span></span><span class="sig-name descname"><span class="pre">plot_imm_fixed</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">age_per_EpS</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">imm_rates_orig</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">imm_rates_adj</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">E</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">S</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_dir</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/ogjpn/parameter_plots.html#plot_imm_fixed"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ogjpn.parameter_plots.plot_imm_fixed" title="Permalink to this definition">#</a></dt>
+<dd><p>Plot the immigration rates implied by the data on population,
+mortality, and fertility versus the adjusted immigration rates
+needed to achieve a stationary distribution of the population in a
+reasonable number of model periods.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>age_per_EpS</strong> (<em>array_like</em>) – list of ages over which to plot
+population distribution</p></li>
+<li><p><strong>imm_rates_orig</strong> (<em>Numpy array</em>) – immigration rates by age</p></li>
+<li><p><strong>imm_rates_adj</strong> (<em>Numpy array</em>) – adjusted immigration rates by age</p></li>
+<li><p><strong>E</strong> (<em>int</em>) – age at which household becomes economically active</p></li>
+<li><p><strong>S</strong> (<em>int</em>) – number of years which household is economically active</p></li>
+<li><p><strong>output_dir</strong> (<em>str</em>) – path to save figure to, if None then figure
+is returned</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><dl class="simple">
+<dt>plot of immigration rates found</dt><dd><p>from residuals and the adjusted rates to hit SS sooner</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>fig (Matplotlib plot object)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ogjpn.parameter_plots.plot_imm_rates">
+<span class="sig-prename descclassname"><span class="pre">ogjpn.parameter_plots.</span></span><span class="sig-name descname"><span class="pre">plot_imm_rates</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">year</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2021</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_title</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/ogjpn/parameter_plots.html#plot_imm_rates"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ogjpn.parameter_plots.plot_imm_rates" title="Permalink to this definition">#</a></dt>
+<dd><p>Create a plot of immigration rates from OG-Core parameterization.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>p</strong> (<em>OG-Core Specifications class</em>) – parameters object</p></li>
+<li><p><strong>year</strong> (<em>integer</em>) – year of mortality ratese to plot</p></li>
+<li><p><strong>include_title</strong> (<em>bool</em>) – whether to include a title in the plot</p></li>
+<li><p><strong>path</strong> (<em>string</em>) – path to save figure to</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>plot of immigration rates</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>fig (Matplotlib plot object)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ogjpn.parameter_plots.plot_income_data">
+<span class="sig-prename descclassname"><span class="pre">ogjpn.parameter_plots.</span></span><span class="sig-name descname"><span class="pre">plot_income_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ages</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">abil_midp</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">abil_pcts</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">emat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_dir</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">filesuffix</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">''</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/ogjpn/parameter_plots.html#plot_income_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ogjpn.parameter_plots.plot_income_data" title="Permalink to this definition">#</a></dt>
+<dd><p>This function graphs ability matrix in 3D, 2D, log, and nolog</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>ages</strong> (<em>Numpy array</em>) – </p></li>
+<li><p><strong>abil_midp</strong> (<em>Numpy array</em>) – midpoints of income percentile bins in
+each ability group</p></li>
+<li><p><strong>abil_pcts</strong> (<em>Numpy array</em>) – percent of population in each lifetime
+income group, length J</p></li>
+<li><p><strong>emat</strong> (<em>Numpy array</em>) – effective labor units by age and lifetime
+income group, size SxJ</p></li>
+<li><p><strong>filesuffix</strong> (<em>str</em>) – suffix to be added to plot files</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ogjpn.parameter_plots.plot_mort_rates">
+<span class="sig-prename descclassname"><span class="pre">ogjpn.parameter_plots.</span></span><span class="sig-name descname"><span class="pre">plot_mort_rates</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_title</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/ogjpn/parameter_plots.html#plot_mort_rates"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ogjpn.parameter_plots.plot_mort_rates" title="Permalink to this definition">#</a></dt>
+<dd><p>Create a plot of mortality rates from OG-Core parameterization.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>p</strong> (<em>OG-Core Specifications class</em>) – parameters object</p></li>
+<li><p><strong>include_title</strong> (<em>bool</em>) – whether to include a title in the plot</p></li>
+<li><p><strong>path</strong> (<em>string</em>) – path to save figure to</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>plot of immigration rates</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>fig (Matplotlib plot object)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ogjpn.parameter_plots.plot_mort_rates_data">
+<span class="sig-prename descclassname"><span class="pre">ogjpn.parameter_plots.</span></span><span class="sig-name descname"><span class="pre">plot_mort_rates_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">totpers</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">min_yr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_yr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">age_year_all</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mort_rates_all</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">infmort_rate</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mort_rates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_dir</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/ogjpn/parameter_plots.html#plot_mort_rates_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ogjpn.parameter_plots.plot_mort_rates_data" title="Permalink to this definition">#</a></dt>
+<dd><p>Plots mortality rates from the model and data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>totpers</strong> (<em>int</em>) – total number of agent life periods (E+S), &gt;= 3</p></li>
+<li><p><strong>min_yr</strong> (<em>int</em>) – age in years at which agents are born, &gt;= 0</p></li>
+<li><p><strong>max_yr</strong> (<em>int</em>) – age in years at which agents die with certainty,
+&gt;= 4</p></li>
+<li><p><strong>age_year_all</strong> (<em>array_like</em>) – ages in mortality rate data</p></li>
+<li><p><strong>mort_rates_all</strong> (<em>array_like</em>) – mortality rates by age from data,
+average across males and females</p></li>
+<li><p><strong>infmort_rate</strong> (<em>scalar</em>) – infant mortality rate</p></li>
+<li><p><strong>mort_rates</strong> (<em>array_like</em>) – fitted mortality rates for each of
+totpers</p></li>
+<li><p><strong>output_dir</strong> (<em>str</em>) – path to save figure to, if None then figure
+is returned</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>plot of mortality rates</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>fig (Matplotlib plot object)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ogjpn.parameter_plots.plot_omega_fixed">
+<span class="sig-prename descclassname"><span class="pre">ogjpn.parameter_plots.</span></span><span class="sig-name descname"><span class="pre">plot_omega_fixed</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">age_per_EpS</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">omega_SS_orig</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">omega_SSfx</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">E</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">S</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_dir</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/ogjpn/parameter_plots.html#plot_omega_fixed"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ogjpn.parameter_plots.plot_omega_fixed" title="Permalink to this definition">#</a></dt>
+<dd><p>Plot the steady-state population distribution implied by the data
+on fertility and mortality rates versus the the steady-state
+population distribution after adjusting immigration rates so that
+the stationary distribution is achieved a reasonable number of
+model periods.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>age_per_EpS</strong> (<em>array_like</em>) – list of ages over which to plot
+population distribution</p></li>
+<li><p><strong>omega_SS_orig</strong> (<em>Numpy array</em>) – population distribution in SS
+without adjustment to immigration rates</p></li>
+<li><p><strong>omega_SSfx</strong> (<em>Numpy array</em>) – population distribution in SS
+after adjustment to immigration rates</p></li>
+<li><p><strong>E</strong> (<em>int</em>) – age at which household becomes economically active</p></li>
+<li><p><strong>S</strong> (<em>int</em>) – number of years which household is economically active</p></li>
+<li><p><strong>output_dir</strong> (<em>str</em>) – path to save figure to, if None then figure
+is returned</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><dl class="simple">
+<dt>plot of SS population distribution</dt><dd><p>before and after adjustment to immigration rates</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>fig (Matplotlib plot object)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ogjpn.parameter_plots.plot_pop_growth">
+<span class="sig-prename descclassname"><span class="pre">ogjpn.parameter_plots.</span></span><span class="sig-name descname"><span class="pre">plot_pop_growth</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start_year</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">2021</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_years_to_plot</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">150</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_title</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/ogjpn/parameter_plots.html#plot_pop_growth"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ogjpn.parameter_plots.plot_pop_growth" title="Permalink to this definition">#</a></dt>
+<dd><p>Create a plot of population growth rates by year.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>p</strong> (<em>OG-Core Specifications class</em>) – parameters object</p></li>
+<li><p><strong>start_year</strong> (<em>integer</em>) – year to begin plotting</p></li>
+<li><p><strong>num_years_to_plot</strong> (<em>integer</em>) – number of years to plot</p></li>
+<li><p><strong>include_title</strong> (<em>bool</em>) – whether to include a title in the plot</p></li>
+<li><p><strong>path</strong> (<em>string</em>) – path to save figure to</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>plot of immigration rates</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>fig (Matplotlib plot object)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ogjpn.parameter_plots.plot_population_path">
+<span class="sig-prename descclassname"><span class="pre">ogjpn.parameter_plots.</span></span><span class="sig-name descname"><span class="pre">plot_population_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">age_per_EpS</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">initial_pop_pct</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">omega_path_lev</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">omega_SSfx</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_year</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">curr_year</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">S</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_dir</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/ogjpn/parameter_plots.html#plot_population_path"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ogjpn.parameter_plots.plot_population_path" title="Permalink to this definition">#</a></dt>
+<dd><p>Plot the distribution of the population over age for various years.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>age_per_EpS</strong> (<em>array_like</em>) – list of ages over which to plot
+population distribution</p></li>
+<li><p><strong>pop_2013_pct</strong> (<em>array_like</em>) – population distribution in 2013</p></li>
+<li><p><strong>omega_path_lev</strong> (<em>Numpy array</em>) – number of households by age
+over the transition path</p></li>
+<li><p><strong>omega_SSfx</strong> (<em>Numpy array</em>) – number of households by age
+in the SS</p></li>
+<li><p><strong>data_year</strong> (<em>int</em>) – year of data for initial_pop_pct</p></li>
+<li><p><strong>curr_year</strong> (<em>int</em>) – current year in the model</p></li>
+<li><p><strong>S</strong> (<em>int</em>) – number of years which household is economically active</p></li>
+<li><p><strong>output_dir</strong> (<em>str</em>) – path to save figure to, if None then figure
+is returned</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><dl class="simple">
+<dt>plot of population distribution</dt><dd><p>at points along the time path</p>
+</dd>
+</dl>
+</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>fig (Matplotlib plot object)</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ogjpn.parameter_plots.txfunc_graph">
+<span class="sig-prename descclassname"><span class="pre">ogjpn.parameter_plots.</span></span><span class="sig-name descname"><span class="pre">txfunc_graph</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">s</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">df</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">X</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Y</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">txrates</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rate_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tax_func_type</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">params_to_plot</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_dir</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/ogjpn/parameter_plots.html#txfunc_graph"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ogjpn.parameter_plots.txfunc_graph" title="Permalink to this definition">#</a></dt>
+<dd><p>This function creates a 3D plot of the fitted tax function against
+the data.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>s</strong> (<em>int</em>) – age of individual, &gt;= 21</p></li>
+<li><p><strong>t</strong> (<em>int</em>) – year of analysis, &gt;= 2016</p></li>
+<li><p><strong>df</strong> (<em>Pandas DataFrame</em>) – 11 variables with N observations of tax
+rates</p></li>
+<li><p><strong>X</strong> (<em>Pandas DataSeries</em>) – labor income</p></li>
+<li><p><strong>Y</strong> (<em>Pandas DataSeries</em>) – capital income</p></li>
+<li><p><strong>Y</strong> – tax rates from the data</p></li>
+<li><p><strong>rate_type</strong> (<em>str</em>) – type of tax rate: mtrx, mtry, etr</p></li>
+<li><p><strong>tax_func_type</strong> (<em>str</em>) – functional form of tax functions</p></li>
+<li><p><strong>params_to_plot</strong> (<em>array_like</em><em> or </em><em>function</em>) – tax function parameters or
+nonparametric function</p></li>
+<li><p><strong>output_dir</strong> (<em>str</em>) – output directory for saving plot files</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="ogjpn.parameter_plots.txfunc_sse_plot">
+<span class="sig-prename descclassname"><span class="pre">ogjpn.parameter_plots.</span></span><span class="sig-name descname"><span class="pre">txfunc_sse_plot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">age_vec</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">sse_mat</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">start_year</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">varstr</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">output_dir</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">round</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../_modules/ogjpn/parameter_plots.html#txfunc_sse_plot"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#ogjpn.parameter_plots.txfunc_sse_plot" title="Permalink to this definition">#</a></dt>
+<dd><p>Plot sum of squared errors of tax functions over age for each year
+of budget window.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>age_vec</strong> (<em>numpy array</em>) – vector of ages, length S</p></li>
+<li><p><strong>sse_mat</strong> (<em>Numpy array</em>) – SSE for each estimated tax function,
+size is BW x S</p></li>
+<li><p><strong>start_year</strong> (<em>int</em>) – first year of budget window</p></li>
+<li><p><strong>varstr</strong> (<em>str</em>) – name of tax function being evaluated</p></li>
+<li><p><strong>output_dir</strong> (<em>str</em>) – path to save graph to</p></li>
+<li><p><strong>round</strong> (<em>int</em>) – which round of sweeping for outliers (0, 1, or 2)</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./content/api"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="output_tables.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Output Table Functions</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="parameter_tables.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Parameter Table Functions</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#module-ogjpn.parameter_plots">ogjpn.parameter_plots</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Tatsuru Kikuchi
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
