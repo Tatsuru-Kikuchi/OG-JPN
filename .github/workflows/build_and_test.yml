@@ -1,6 +1,13 @@
-name: Build and test [Python 3.10]
+name: Build and test [Python 3.9, 3.10]
 
 on: [push, pull_request]
+  # paths:
+  #   - '*.py'
+  #   - 'environment.yml'
+  #   - 'requirements.txt'
+  #   - '*.pkl'
+  #   - '*.csv'
+  #   - '*.json'
   
 jobs:
   build:
