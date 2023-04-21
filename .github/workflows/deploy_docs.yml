@@ -5,7 +5,7 @@ name: Build and Deploy Jupyter Book documentation
       - master
       
 permissions:
-  contents: write
+  contents: read, write
 
 jobs:
   build-and-deploy:
