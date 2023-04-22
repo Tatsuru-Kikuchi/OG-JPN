@@ -5,7 +5,7 @@ dependencies:
 - python>=3.10.0
 - numpy
 - psutil
-- scipy>=1.10.1
+- scipy>=1.2.3
 - pandas>=2.0.0
 - matplotlib
 - dask>=2023.4.0
