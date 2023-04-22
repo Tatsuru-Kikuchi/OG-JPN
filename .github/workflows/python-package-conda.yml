@@ -3,10 +3,9 @@ name: Python Package using Conda
 on: [push]
 
 jobs:
-  build-linux:
+  build-and-deploy:
+    if: github.repository == 'Tatsuru-Kikuchi/OG-JPN'
     runs-on: macos-latest
-    strategy:
-      max-parallel: 5
 
     steps:
     - uses: actions/checkout@v3
