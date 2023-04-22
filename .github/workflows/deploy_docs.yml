@@ -6,25 +6,28 @@ on:
 
 jobs:
   build-and-deploy:
-    if: github.repository == 'Tatsuru-Kikuchi/OG-JPN'
-    concurrency: ci-${{ github.ref }} # Recommended if you intend to make multiple deployments in quick succession.
     runs-on: macos-latest
     steps:
-      - uses: actions/setup-node@v3
+      - name: Checkout
+        uses: actions/checkout@v3
         with:
-          node-version: '16'
-      - run: npm install -g bats
+          persist-credentials: false
 
-      - name: Install and Build 🔧 # This example project is built using npm and outputs the result to the 'build' folder. Replace with the commands required to build your project, or remove this step entirely if your site is pre-built.
-        run: |
-          npm ci
-          npm run build
+      - name: Setup Miniconda
+        uses: conda-incubator/setup-miniconda@v2
+        with:
+          miniforge-variant: Mambaforge
+          activate-environment: ogjpn-dev
+          environment-file: environment.yml
+          python-version: 3.10
+          auto-activate-base: false
           
       - name: Build # Build Jupyter Book
         run: |
           pip install -e .
           pip install jupyter-book>=0.15.1
           pip install sphinxcontrib-bibtex>=2.5.0
+          python -m ipykernel install --user --name=ogjpn-dev
           cd docs
           jb build ./book
           
