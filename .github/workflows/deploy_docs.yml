@@ -6,6 +6,7 @@ on:
 
 jobs:
   build-and-deploy:
+    if: github.repository == 'Tatsuru-Kikuchi/OG-JPN'
     runs-on: macos-latest
     steps:
       - name: Checkout
