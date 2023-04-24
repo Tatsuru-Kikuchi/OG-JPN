@@ -1,23 +1,26 @@
-try:
-    from setuptools import setup
-except ImportError:
-    from distutils.core import setup
+import setuptools
 
-with open("README.md") as f:
-    longdesc = f.read()
+with open("README.md", "r", encoding="utf-8") as fh:
+    longdesc = fh.read()
 
-version = "0.0.0"
-
-config = {
-    "description": "JPN Calibration for OG-Core",
-    "long_description": longdesc,
-    "url": "https://github.com/Tatsuru-Kikuchi/OG-JPN/",
-    "download_url": "https://github.com/Tatsuru-Kikuchi/OG-JPN/",
-    "version": version,
-    "license": "CC0 1.0 Universal public domain dedication",
-    "packages": ["ogjpn"],
-    "include_package_data": True,
-    "name": "ogjpn",
+setuptools.setup(
+    name="ogjpn",
+    version="1.0.0",
+    author="Tatsuru Kikuchi"
+    license="CC0 1.0 Universal (CC0 1.0) Public Domain Dedication",
+    description="An overlapping generations model for fiscal policy analysis in Japan",
+    long_description_content_type="text/markdown",
+    long_description=longdesc,
+    url: "https://github.com/Tatsuru-Kikuchi/OG-JPN/",
+    download_url: "https://github.com/Tatsuru-Kikuchi/OG-JPN/",
+    packages=["ogjpn"],
+    package_data={
+        "ogjpn": [
+            "default_parameters.json",
+        ]
+    },
+    iinclude_packages=True,
+    python_requires=">=3.10,
     "install_requires": [
         "numpy",
         "psutil",
@@ -37,7 +40,6 @@ config = {
         "linearmodels",
         "ogcore",
     ],
-    "package_data": {"ogjpn": ["data/PSID/*"]},
     "classifiers": [
         "Development Status :: 2 - Pre-Alpha",
         "Intended Audience :: Developers",
@@ -46,12 +48,9 @@ config = {
         "Operating System :: OS Independent",
         "Programming Language :: Python",
         "Programming Language :: Python :: 3",
-        "Programming Language :: Python :: 3.7",
-        "Programming Language :: Python :: 3.8",
         "Programming Language :: Python :: 3.9",
+        "Programming Language :: Python :: 3.10",
         "Topic :: Software Development :: Libraries :: Python Modules",
     ],
     "tests_require": ["pytest"],
-}
-
-setup(**config)
+)
