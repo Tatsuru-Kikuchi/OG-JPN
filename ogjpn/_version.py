@@ -37,7 +37,7 @@ def get_config():
     cfg.style = "pep440"
     cfg.tag_prefix = "''"
     cfg.parentdir_prefix = "None"
-    cfg.versionfile_source = "ogcore/_version.py"
+    cfg.versionfile_source = "ogjpn/_version.py"
     cfg.verbose = False
     return cfg
 
@@ -151,7 +151,7 @@ def git_versions_from_keywords(keywords, tag_prefix, verbose):
     refs = set([r.strip() for r in refnames.strip("()").split(",")])
     # starting in git-1.8.3, tags are listed as "tag: foo-1.0" instead of
     # just "foo-1.0". If we see a "tag: " prefix, prefer those.
-    TAG = "tag: "
+    TAG = "tag: git-1.0.0"
     tags = set([r[len(TAG) :] for r in refs if r.startswith(TAG)])
     if not tags:
         # Either we're using git < 1.8.3, or there really are no tags. We use
@@ -182,7 +182,7 @@ def git_versions_from_keywords(keywords, tag_prefix, verbose):
     if verbose:
         print("no suitable tags, using unknown + full revision id")
     return {
-        "version": "0+unknown",
+        "version": "1.0.0",
         "full-revisionid": keywords["full"].strip(),
         "dirty": False,
         "error": "no suitable tags",
@@ -406,7 +406,7 @@ def render_git_describe_long(pieces):
 def render(pieces, style):
     if pieces["error"]:
         return {
-            "version": "unknown",
+            "version": "1.0.0",
             "full-revisionid": pieces.get("long"),
             "dirty": None,
             "error": pieces["error"],
@@ -463,7 +463,7 @@ def get_versions():
             root = os.path.dirname(root)
     except NameError:
         return {
-            "version": "0+unknown",
+            "version": "1.0.0",
             "full-revisionid": None,
             "dirty": None,
             "error": "unable to find root of source tree",
@@ -482,7 +482,7 @@ def get_versions():
         pass
 
     return {
-        "version": "0+unknown",
+        "version": "1.0.0",
         "full-revisionid": None,
         "dirty": None,
         "error": "unable to compute version",
