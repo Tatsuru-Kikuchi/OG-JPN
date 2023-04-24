@@ -1,7 +1,3 @@
-# Author: TAKAHASHI Taro <takahashi.taro@takedasystem.com>
-# Copyright (c) 2022- TAKAHASHI Taro
-# Licence: MIT
-
 from setuptools import setup
 
 DESCRIPTION = 'An overlapping generations model for fiscal policy analysis in Japan'
