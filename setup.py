@@ -8,8 +8,8 @@ URL = 'https://github.com/Tatsuru-Kikuchi/OG-JPN'
 LICENSE = 'MIT'
 DOWNLOAD_URL = URL
 VERSION = '1.0.0'
-python_requires=">=3.10,
-    "install_requires": [
+python_requires=">=3.10"
+INSTALL_REQUIRES = [
         "numpy",
         "psutil",
         "scipy>=1.5.0",
@@ -26,8 +26,8 @@ python_requires=">=3.10,
         "openpyxl>=3.1.2",
         "statsmodels",
         "linearmodels",
-        "ogcore",
-    ]
+        "ogcore"
+]
 PACKAGES = [
     'ogjpn'
 ]
