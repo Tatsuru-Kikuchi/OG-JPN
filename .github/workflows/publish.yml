@@ -2,16 +2,24 @@ name: Publish to PyPI.org
 on:
   release:
     types: [published]
+    
 jobs:
-  pypi:
+  deploy:
+    name: Publish to PyPI
+    if: github.repository == 'Tatsuru-Kikuchi/OG-JPN'
     runs-on: macos-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
+      - name: Checkout repo
+        uses: actions/checkout@v2
+      - name: Setup Python
+        uses: actions/setup-python@v2
         with:
-          fetch-depth: 0
-      - run: python3 -m pip install --upgrade build && python3 -m build
-      - name: Publish package
+          python-version: 3.10
+      - name: Build package
+        run: make pip-package
+      - name: Publish a Python distribution to PyPI
         uses: pypa/gh-action-pypi-publish@release/v1
         with:
-          password: ${{ secrets.PYPI_API_TOKEN }}
+          user: __token__
+          password: ${{ secrets.PYPI }}
+          skip_existing: true
