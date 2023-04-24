@@ -1,22 +1,22 @@
 """
-Specify what is available to import from the ogcore package.
+Specify what is available to import from the ogjpn package.
 """
-from ogcore.SS import *
-from ogcore.TPI import *
-from ogcore.aggregates import *
-from ogcore.constants import *
-from ogcore.elliptical_u_est import *
-from ogcore.execute import *
-from ogcore.firm import *
-from ogcore.fiscal import *
-from ogcore.household import *
-from ogcore.output_plots import *
-from ogcore.output_tables import *
-from ogcore.parameter_plots import *
-from ogcore.parameter_tables import *
-from ogcore.parameters import *
-from ogcore.tax import *
-from ogcore.txfunc import *
-from ogcore.utils import *
+from ogjpn.SS import *
+from ogjpn.TPI import *
+from ogjpn.aggregates import *
+from ogjpn.constants import *
+from ogjpn.elliptical_u_est import *
+from ogjpn.execute import *
+from ogjpn.firm import *
+from ogjpn.fiscal import *
+from ogjpn.household import *
+from ogjpn.output_plots import *
+from ogjpn.output_tables import *
+from ogjpn.parameter_plots import *
+from ogjpn.parameter_tables import *
+from ogjpn.parameters import *
+from ogjpn.tax import *
+from ogjpn.txfunc import *
+from ogjpn.utils import *
 
-__version__ = "1.0.0"
+__version__ = "1.0.1"
