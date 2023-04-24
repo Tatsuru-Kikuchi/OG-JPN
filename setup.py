@@ -7,7 +7,7 @@ AUTHOR_EMAIL = 'tatsuru.kikuchi@e.u-tokyo.ac.jp'
 URL = 'https://github.com/Tatsuru-Kikuchi/OG-JPN'
 LICENSE = 'MIT'
 DOWNLOAD_URL = URL
-VERSION = '0.1.0'
+VERSION = '1.0.0'
 python_requires=">=3.10,
     "install_requires": [
         "numpy",
