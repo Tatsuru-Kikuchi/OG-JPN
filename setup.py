@@ -7,7 +7,7 @@ setuptools.setup(
     name="ogjpn",
     version="1.0.0",
     author="Tatsuru Kikuchi"
-    license="CC0 1.0 Universal (CC0 1.0) Public Domain Dedication",
+    license="MIT License",
     description="An overlapping generations model for fiscal policy analysis in Japan",
     long_description_content_type="text/markdown",
     long_description=longdesc,
@@ -44,7 +44,7 @@ setuptools.setup(
         "Development Status :: 2 - Pre-Alpha",
         "Intended Audience :: Developers",
         "Natural Language :: English",
-        "License :: OSI Approved :: CC0 1.0 Universal public domain dedication",
+        "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
         "Programming Language :: Python",
         "Programming Language :: Python :: 3",
