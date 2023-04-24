@@ -1,26 +1,18 @@
-import setuptools
+# Author: TAKAHASHI Taro <takahashi.taro@takedasystem.com>
+# Copyright (c) 2022- TAKAHASHI Taro
+# Licence: MIT
 
-with open("README.md", "r", encoding="utf-8") as fh:
-    longdesc = fh.read()
+from setuptools import setup
 
-setuptools.setup(
-    name="ogjpn",
-    version="1.0.0",
-    author="Tatsuru Kikuchi"
-    license="MIT License",
-    description="An overlapping generations model for fiscal policy analysis in Japan",
-    long_description_content_type="text/markdown",
-    long_description=longdesc,
-    url: "https://github.com/Tatsuru-Kikuchi/OG-JPN/",
-    download_url: "https://github.com/Tatsuru-Kikuchi/OG-JPN/",
-    packages=["ogjpn"],
-    package_data={
-        "ogjpn": [
-            "default_parameters.json",
-        ]
-    },
-    iinclude_packages=True,
-    python_requires=">=3.10,
+DESCRIPTION = 'An overlapping generations model for fiscal policy analysis in Japan'
+NAME = 'ogjpn'
+AUTHOR = 'Tatsuru Kikuchi'
+AUTHOR_EMAIL = 'tatsuru.kikuchi@e.u-tokyo.ac.jp'
+URL = 'https://github.com/Tatsuru-Kikuchi/OG-JPN'
+LICENSE = 'MIT'
+DOWNLOAD_URL = URL
+VERSION = '0.1.0'
+python_requires=">=3.10,
     "install_requires": [
         "numpy",
         "psutil",
@@ -39,18 +31,33 @@ setuptools.setup(
         "statsmodels",
         "linearmodels",
         "ogcore",
-    ],
-    "classifiers": [
-        "Development Status :: 2 - Pre-Alpha",
-        "Intended Audience :: Developers",
-        "Natural Language :: English",
-        "License :: OSI Approved :: MIT License",
-        "Operating System :: OS Independent",
-        "Programming Language :: Python",
-        "Programming Language :: Python :: 3",
-        "Programming Language :: Python :: 3.9",
-        "Programming Language :: Python :: 3.10",
-        "Topic :: Software Development :: Libraries :: Python Modules",
-    ],
-    "tests_require": ["pytest"],
+    ]
+PACKAGES = [
+    'ogjpn'
+]
+CLASSIFIERS=[
+    'License :: OSI Approved :: MIT License',
+    'Programming Language :: Python :: 3.10'
+]
+with open('README.md', 'r', encoding='utf-8') as fp:
+    readme = fp.read()
+LONG_DESCRIPTION = readme
+LONG_DESCRIPTION_CONTENT_TYPE = 'text/markdown'
+
+setup(
+    name=NAME,
+    version=VERSION,
+    description=DESCRIPTION,
+    long_description=LONG_DESCRIPTION,
+    long_description_content_type=LONG_DESCRIPTION_CONTENT_TYPE,
+    author=AUTHOR,
+    author_email=AUTHOR_EMAIL,
+    maintainer=AUTHOR,
+    maintainer_email=AUTHOR_EMAIL,
+    url=URL,
+    download_url=URL,
+    packages=PACKAGES,
+    classifiers=CLASSIFIERS,
+    license=LICENSE,
+    install_requires=INSTALL_REQUIRES
 )
